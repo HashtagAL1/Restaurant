@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const express = require('express');
+const fs = require('fs');
 const router = express.Router();
 const encryption = require('../config/encryption');
 const jwt = require('jsonwebtoken');
 require('../config/dbConfig');
 const User = mongoose.model('User');
-const secret = 'kalamana';
+const secret = fs.readFileSync('D:\\portProject\\secret.txt', 'utf-8');
 
 router.post('/register', (req, res) => {
     const {username, password, email} = req.body;
