@@ -1,3 +1,6 @@
 /server/.idea
 /server/server.iml
 /server/node_modules
+/client/.idea
+/client/client.iml
+/client/client/node_modules
