@@ -48,7 +48,7 @@ router.post('/login', (req, res) => {
         .then((user) => {
             const hashedPass = encryption.generateHashedPassword(user.salt, password);
             if (hashedPass !== user.hashedPass) {
-                return res.status(401).json({
+                return res.status(200).json({
                     success: false,
                     message: 'Invalid credentials'
                 });

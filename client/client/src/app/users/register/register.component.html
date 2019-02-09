@@ -1,6 +1,5 @@
 <div class="loginRegisterBody">
   <div class="col-sm-4">
-    <div *ngIf="this.error !== ''" class="alert alert-danger">{{this.error}}</div>
     <form [formGroup]="registerForm" (ngSubmit)="register()">
       <fieldset>
         <div class="form-group">

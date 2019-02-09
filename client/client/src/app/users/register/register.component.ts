@@ -23,7 +23,6 @@ export class RegisterComponent implements OnInit {
       Validators.maxLength(20)]),
     confirmPassword: new FormControl('', [Validators.required])
   });
-  error = '';
 
   ngOnInit() {
   }
@@ -39,11 +38,10 @@ export class RegisterComponent implements OnInit {
     }
     this.auth.register(username, password, email).subscribe((res) => {
       if (!res.success) {
-          this.error = res.message;
+          this.notifierService.notify('warning', res.message);
           return;
       }
       this.auth.signIn(res);
-      this.error = '';
       this.notifierService.notify('success', res.message);
       this.router.navigate(['/']);
     })

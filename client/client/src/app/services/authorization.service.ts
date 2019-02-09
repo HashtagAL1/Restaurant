@@ -38,7 +38,13 @@ export class AuthorizationService {
   isLoggedIn() {
     const access_token = localStorage.getItem('access_token');
     if (access_token) {
-        return !this.helper.isTokenExpired(access_token);
+        if (this.helper.isTokenExpired(access_token)) {
+            this.logout();
+            this.notifier.notify('warning', 'Session expired. Please login again.');
+            this.router.navigate(['/']);
+            return false;
+        }
+        return true;
     }
     return false;
   }

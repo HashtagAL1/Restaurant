@@ -16,7 +16,6 @@ export class LoginComponent implements OnInit {
       Validators.maxLength(15)]),
     password: new FormControl('', [Validators.required])
   });
-  error = '';
 
   constructor(public auth: AuthorizationService,
               public notifier: NotifierService,
@@ -30,10 +29,9 @@ export class LoginComponent implements OnInit {
     const password = this.loginForm.get('password').value;
     this.auth.login(username, password).subscribe((res) => {
       if (!res.success) {
-          this.error = res.message;
+          this.notifier.notify('warning', res.message);
           return;
       }
-      this.error = '';
       this.auth.signIn(res);
       this.notifier.notify('success', res.message);
       this.router.navigate(['/']);
