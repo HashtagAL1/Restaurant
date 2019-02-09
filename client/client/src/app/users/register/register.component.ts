@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
     const confirmPassword = this.registerForm.get('confirmPassword').value;
     const email = this.registerForm.get('email').value;
     if (password !== confirmPassword) {
-        this.error = 'Passwords do not match!';
+        this.notifierService.notify('warning', 'Passwords do not match');
         return;
     }
     this.auth.register(username, password, email).subscribe((res) => {

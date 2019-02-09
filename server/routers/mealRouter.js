@@ -74,6 +74,12 @@ router.get('/category/:category', (req, res) => {
     const category = req.params.category;
     Meal.find({category: category})
         .then((meals) => {
+            if (meals.length === 0) {
+                return res.status(200).json({
+                    success: false,
+                    message: 'No meals were found'
+                });
+            }
             return res.status(200).json({
                 success: true,
                 message: 'Meals fetched',
@@ -96,6 +102,25 @@ router.get('/singleMeal/:mealId', (req, res) => {
             return res.status(200).json({
                 success: false,
                 message: 'Invalid data'
+            });
+        });
+});
+
+router.post('/search', (req, res) => {
+    const query = req.body['data'].toLowerCase();
+    Meal.find({})
+        .then((meals) => {
+            meals = meals.filter(m => m.name.toLowerCase().indexOf(query) > -1);
+            if (meals.length > 0) {
+                return res.status(200).json({
+                    success: true,
+                    message: 'Meals fetched',
+                    meals: meals
+                });
+            }
+            return res.status(200).json({
+                success: false,
+                message: 'No meals were found'
             });
         });
 });

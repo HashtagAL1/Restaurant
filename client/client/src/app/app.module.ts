@@ -9,6 +9,7 @@ import {UsersModule} from "./users/users.module";
 import {NotifierModule} from "angular-notifier";
 import {MealsModule} from "./meals/meals.module";
 
+
 @NgModule({
   declarations: [
     AppComponent

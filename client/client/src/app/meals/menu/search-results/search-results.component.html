@@ -1,0 +1,20 @@
+<div class="otherBody">
+  <h1 class="text-center">{{this.title}}</h1>
+  <div class="col-sm-12">
+    <ul>
+      <li *ngFor="let meal of this.results | paginate: { itemsPerPage: 10, currentPage: p }" class="mealItem menuPart col-sm-3">
+        <div>
+          <a href="#"><img class="mealImage" src="{{meal.imageUrl}}"/></a>
+          <div class="mealDescription">
+            <div>Name: {{meal.name}}</div>
+            <div>Price: {{meal.price}}$</div>
+            <div>
+              <button class="btn btn-success">Add To Cart</button>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <pagination-controls class="paginationCustom" (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

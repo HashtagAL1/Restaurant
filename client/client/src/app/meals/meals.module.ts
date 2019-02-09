@@ -7,16 +7,22 @@ import {RouterModule} from "@angular/router";
 import {MealService} from "../services/meal.service";
 import { AddMealComponent } from './add-meal/add-meal.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import {NgxPaginationModule} from "ngx-pagination";
+import { FilterFormComponent } from './menu/filter-form/filter-form.component';
+import { SearchFormComponent } from './menu/search-form/search-form.component';
+import { SearchResultsComponent } from './menu/search-results/search-results.component';
+import {NgxNavigationWithDataComponent} from "ngx-navigation-with-data";
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
-  exports: [MenuComponent, AddMealComponent],
-  declarations: [MenuComponent, AddMealComponent],
-  providers: [AuthorizationService, MealService]
+  exports: [MenuComponent, AddMealComponent, FilterFormComponent, SearchFormComponent, SearchResultsComponent],
+  declarations: [MenuComponent, AddMealComponent, FilterFormComponent, SearchFormComponent, SearchResultsComponent],
+  providers: [AuthorizationService, MealService, NgxNavigationWithDataComponent]
 })
 export class MealsModule { }

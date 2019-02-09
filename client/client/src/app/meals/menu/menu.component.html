@@ -1,3 +1,37 @@
-<p>
-  menu works!
-</p>
+<div class="otherBody">
+  <h1 class="text-center">Menu</h1>
+  <div class="col-sm-12" id="menu">
+    <div class="col-sm-3 menuPart formsList" style="border: 1px solid red">
+      <app-filter-form [categories]="this.categories"></app-filter-form>
+      <app-search-form></app-search-form>
+      <form [formGroup]="this.sortForm" (ngSubmit)="this.sort()">
+        <div class="form-group">
+          <h3>Sort by price:</h3>
+          <label class="formLabel" for="criteria">Criteria:</label>
+          <select class="form-control" id="criteria" formControlName="criteria">
+            <option value="ascending">Ascending</option>
+            <option value="descending">Descending</option>
+          </select>
+          <button class="btn btn-info">Sort</button>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-9 menuPart menuList" style="border: 1px solid red">
+      <ul>
+        <li *ngFor="let meal of this.meals | paginate: { itemsPerPage: 10, currentPage: p }" class="mealItem menuPart col-sm-4">
+          <div>
+            <a href="#"><img class="mealImage" src="{{meal.imageUrl}}"/></a>
+            <div class="mealDescription">
+              <div>Name: {{meal.name}}</div>
+              <div>Price: {{meal.price}}$</div>
+              <div>
+                <button class="btn btn-success">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <pagination-controls class="paginationCustom" (pageChange)="p = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

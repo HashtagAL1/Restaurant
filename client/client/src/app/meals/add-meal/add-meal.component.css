@@ -1,4 +1,10 @@
 #addMealScreen {
-  margin-top: 0;
+  margin-top: 3%;
+  text-align: center;
+}
+
+
+.formDivs {
+  display: inline-block;
 }
 

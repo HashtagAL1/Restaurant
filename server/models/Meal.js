@@ -4,7 +4,8 @@ const mealSchema = new mongoose.Schema({
     price: {type: Number, required: true},
     imageUrl: {type: String, required: true},
     category: {type: String, required: true},
-    ingredients: [String]
+    ingredients: [String],
+    description: {type: String, required: true}
 });
 
 module.exports = mongoose.model('Meal', mealSchema);

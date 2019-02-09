@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from "../../services/authorization.service";
 import {Router} from "@angular/router";
+import {MealService} from "../../services/meal.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-menu',
@@ -10,11 +12,28 @@ import {Router} from "@angular/router";
 export class MenuComponent implements OnInit {
 
   meals = [];
+  categories = ['Main', 'Salad', 'Desert', 'Appetizer', 'Vegetarian', 'Soup', 'Pizza', 'Sandwich', 'Seafood', 'Other'];
+  sortForm = new FormGroup({
+    criteria: new FormControl('ascending', [Validators.required])
+  });
 
   constructor(public auth: AuthorizationService,
-              public router: Router) { }
+              public router: Router,
+              public mealService: MealService) { }
 
   ngOnInit() {
+    this.mealService.getAllMeals().subscribe((res) => {
+      this.meals = res.meals.sort((a, b) => a.price - b.price);
+    });
+  }
+
+  sort() {
+    const criteria = this.sortForm.get('criteria').value;
+    if (criteria === 'ascending') {
+        this.meals = this.meals.sort((a, b) => a.price - b.price);
+        return;
+    }
+    this.meals = this.meals.sort((a, b) => b.price - a.price);
   }
 
 }

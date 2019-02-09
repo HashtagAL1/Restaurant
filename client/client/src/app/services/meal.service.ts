@@ -15,9 +15,18 @@ export class MealService {
     return this.http.get('http://localhost:3333/meals/allMeals');
   }
 
-  addMeal(data) {
+  addMeal(data): Observable<any> {
     const payload = JSON.stringify(data);
     return this.http.post('http://localhost:3333/meals/add', payload, {headers: this.auth.createHeaders()});
+  }
+
+  searchByName(data): Observable<any> {
+    const payload = JSON.stringify({data});
+    return this.http.post('http://localhost:3333/meals/search', payload, {headers: this.auth.createHeaders()});
+  }
+
+  getAllMealsCategory(category): Observable<any> {
+    return this.http.get(`http://localhost:3333/meals/category/${category}`);
   }
 
 }
