@@ -1,0 +1,38 @@
+<div class="col-sm-12">
+  <div class="col-sm-12">
+    <table class="table table-hover">
+      <thead>
+      <tr class="table-dark">
+        <th>Username</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>
+          <form [formGroup]="this.searchForm" (ngSubmit)="this.findUser()">
+            <input type="text" class="form-control insideFormElements thin" formControlName="username" placeholder="Enter username"/>
+            <input type="submit" class="btn btn-info insideFormElements"
+                   [value]="this.searchForm.get('username').value === '' ? 'Find All' : 'Search'"/>
+          </form>
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of this.allUsers" [className]="this.setRowClass(user)">
+        <td>{{user.username}}</td>
+        <td>{{user.email}}</td>
+        <td>
+          <form [formGroup]="this.updateForm" (ngSubmit)="this.updateUser(user)">
+            <select formControlName="role" class="form-control insideFormElements thin">
+              <option [selected]="user.role == 'admin'" value="admin">Admin</option>
+              <option [selected]="user.role == 'moderator'" value="moderator">Moderator</option>
+              <option [selected]="user.role == 'deliverer'" value="deliverer">Deliverer</option>
+              <option [selected]="user.role == 'user'" value="user">User</option>
+            </select>
+            <button type="submit" class="btn btn-dark insideFormElements">Update Role</button>
+          </form>
+        </td>
+        <td></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

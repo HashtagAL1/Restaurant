@@ -7,7 +7,7 @@ const User = mongoose.model('User');
 router.post('/update/:userId', (req, res) => {
     const userId = req.params.userId;
     const {role} = req.body;
-    User.update({_id: userId}, { $set: {role: role}})
+    User.updateOne({_id: userId}, { $set: {role: role}})
         .then((updatedUser) => {
             return res.status(200).json({
                 success: true,

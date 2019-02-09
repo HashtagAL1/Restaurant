@@ -1,0 +1,16 @@
+.insideDivs {
+  display: inline-block;
+}
+
+.insideFormElements {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.thin {
+  width: 40%;
+}
+
+.actionButtons {
+  margin-right: 5px;
+}
