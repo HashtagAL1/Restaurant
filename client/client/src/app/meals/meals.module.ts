@@ -5,15 +5,18 @@ import {AuthorizationService} from "../services/authorization.service";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
 import {MealService} from "../services/meal.service";
+import { AddMealComponent } from './add-meal/add-meal.component';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
-  exports: [MenuComponent],
-  declarations: [MenuComponent],
+  exports: [MenuComponent, AddMealComponent],
+  declarations: [MenuComponent, AddMealComponent],
   providers: [AuthorizationService, MealService]
 })
 export class MealsModule { }

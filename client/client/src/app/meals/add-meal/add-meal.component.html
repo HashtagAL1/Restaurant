@@ -1,0 +1,47 @@
+<div class="formBody" id="addMealScreen">
+  <div class="col-sm-4">
+    <form [formGroup]="this.addForm" (ngSubmit)="this.addMeal()">
+      <fieldset>
+        <div class="form-group">
+          <label class="formLabel" for="mealName">Meal name</label>
+          <input type="text" class="form-control" id="mealName" formControlName="name" placeholder="Enter meal name"/>
+          <div *ngIf="this.addForm.get('name').touched && this.addForm.get('name').invalid" class="alert alert-danger">
+            <div *ngIf="this.addForm.get('name').errors.required">This field is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="formLabel" for="price">Meal price</label>
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+            <input type="text" class="form-control" id="price" formControlName="price" aria-describedby="emailHelp"
+                   placeholder="Enter meal price">
+          </div>
+
+          <div *ngIf="this.addForm.get('price').touched && this.addForm.get('price').invalid" class="alert alert-danger">
+            <div *ngIf="this.addForm.get('price').errors.required">This field is required</div>
+            <div *ngIf="this.addForm.get('price').errors.pattern">Invalid price input</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="formLabel" for="imageUrl">Image</label>
+          <input type="text" class="form-control" formControlName="imageUrl" id="imageUrl" placeholder="Enter image URL">
+          <div *ngIf="this.addForm.get('imageUrl').touched && this.addForm.get('imageUrl').invalid" class="alert alert-danger">
+            <div *ngIf="this.addForm.get('imageUrl').errors.required">This field is required</div>
+            <div *ngIf="this.addForm.get('imageUrl').errors.pattern">Invalid URL</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="formLabel" for="category">Category</label>
+          <select class="form-control" id="category" formControlName="category">
+            <option *ngFor="let c of this.categories" [selected]="c === 'Main'" value="{{c.toLowerCase()}}">{{c}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="formLabel" for="ingredients">Ingredients</label>
+          <textarea class="form-control" id="ingredients" formControlName="ingredients" placeholder="Enter ingredients"></textarea>
+        </div>
+        <button [disabled]="!this.addForm.valid" type="submit" class="btn btn-success">Add Meal</button>
+      </fieldset>
+    </form>
+  </div>
+</div>

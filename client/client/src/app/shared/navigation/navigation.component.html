@@ -22,7 +22,7 @@
         <a class="nav-link" href="#">All Orders</a>
       </li>
       <li *ngIf="this.auth.isModerator()" class="nav-item">
-        <a class="nav-link" href="#">Add Product</a>
+        <a class="nav-link" routerLink="/addMeal">Add Meal</a>
       </li>
       <li *ngIf="this.auth.isAdmin()" class="nav-item">
         <a class="nav-link" routerLink="/allUsers">Users</a>
