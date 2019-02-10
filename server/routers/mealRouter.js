@@ -90,7 +90,7 @@ router.get('/category/:category', (req, res) => {
 
 router.get('/singleMeal/:mealId', (req, res) => {
     const mealId = req.params.mealId;
-    Meal.find({_id: mealId})
+    Meal.findOne({_id: mealId})
         .then((meal) => {
             return res.status(200).json({
                 success: true,

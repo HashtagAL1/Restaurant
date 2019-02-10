@@ -1,3 +1,8 @@
-.bg-black {
-  background-color: #343a40;
+.linkColor {
+  color: #696868 !important;
+  font-weight: bold;
+}
+
+.nav-item:hover .linkColor {
+  color: black !important;
 }

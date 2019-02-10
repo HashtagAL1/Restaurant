@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-black">
-  <span *ngIf="this.auth.isLoggedIn()" class="navbar-brand">Welcome, {{this.auth.getUsername()}}</span>
+<nav class="navbar navbar-expand-lg navbar-dark bg-yellowCustom">
+  <span *ngIf="this.auth.isLoggedIn()" class="navbar-brand linkColor">Welcome, {{this.auth.getUsername()}}</span>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,36 +7,36 @@
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link linkColor" routerLink="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/menu">Menu</a>
+        <a class="nav-link linkColor" routerLink="/menu">Menu</a>
       </li>
       <li *ngIf="this.auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link" href="#">My Cart</a>
+        <a class="nav-link linkColor" href="#">My Cart</a>
       </li>
       <li *ngIf="this.auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link" href="#">My Orders</a>
+        <a class="nav-link linkColor" href="#">My Orders</a>
       </li>
       <li *ngIf="this.auth.isAdmin() || this.auth.isDeliverer()" class="nav-item">
-        <a class="nav-link" href="#">All Orders</a>
+        <a class="nav-link linkColor" href="#">All Orders</a>
       </li>
       <li *ngIf="this.auth.isModerator()" class="nav-item">
-        <a class="nav-link" routerLink="/addMeal">Add Meal</a>
+        <a class="nav-link linkColor" routerLink="/addMeal">Add Meal</a>
       </li>
       <li *ngIf="this.auth.isAdmin()" class="nav-item">
-        <a class="nav-link" routerLink="/allUsers">Users</a>
+        <a class="nav-link linkColor" routerLink="/allUsers">Users</a>
       </li>
     </ul>
     <ul class="navbar-nav mr-sm-2">
       <li *ngIf="!this.auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
+        <a class="nav-link linkColor" routerLink="/login">Login</a>
       </li>
       <li *ngIf="this.auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link" href="#" (click)="this.auth.logout()">Logout</a>
+        <a class="nav-link linkColor" href="#" (click)="this.auth.logout()">Logout</a>
       </li>
       <li *ngIf="!this.auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link" routerLink="/register">Register</a>
+        <a class="nav-link linkColor" routerLink="/register">Register</a>
       </li>
     </ul>
   </div>

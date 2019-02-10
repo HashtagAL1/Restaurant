@@ -29,4 +29,8 @@ export class MealService {
     return this.http.get(`http://localhost:3333/meals/category/${category}`);
   }
 
+  getMeal(id): Observable<any> {
+    return this.http.get(`http://localhost:3333/meals/singleMeal/${id}`);
+  }
+
 }

@@ -12,7 +12,7 @@ app-root {
   display: inline-block;
 }
 
-#menu {
+.menu {
   margin-top: 3%;
 }
 
@@ -45,6 +45,31 @@ app-root {
   height: 200px;
 }
 
+.detailsImage {
+  width: 100%;
+  height: inherit;
+}
+
+.detailsDivs {
+  height: 330px;
+}
+
+#mealButtons button {
+  margin-right: 7%;
+}
+
+.bg-yellowCustom {
+  background-color: #ffc200;
+}
+
+.detailsInfo {
+  font-weight: bold;
+}
+
+#mealPrice {
+  font-size: x-large;
+}
+
 .paginationCustom {
   text-align: center;
 }
@@ -54,6 +79,16 @@ app-root {
   width: 50%;
   margin-left: 25%;
 }
+
+.menuList {
+  float: right;
+}
+
+.formsList {
+  float: left;
+}
+
+
 
 .paginationCustom /deep/ .ngx-pagination .current {
   background-color: #ffc200;
@@ -76,8 +111,7 @@ app-root {
 }
 
 .otherBody {
-  background-image: url("./assets/backgroundVropped2.jpg");
-  background-repeat: round;
+  background-color: #f8ff77;
   position: absolute;
   width: 100%;
   min-height: 100%;
@@ -105,8 +139,12 @@ app-root {
 
 .formLabel {
   font-size: 18px;
-  color: #e2e1e1;
+  color: #22251e;
   font-weight: bold;
+}
+
+#mealButtons {
+  margin-top: 3%;
 }
 
 .notifier__container * {

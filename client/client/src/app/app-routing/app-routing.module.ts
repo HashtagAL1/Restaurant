@@ -8,6 +8,7 @@ import {AllUsersComponent} from "../users/all-users/all-users.component";
 import {AddMealComponent} from "../meals/add-meal/add-meal.component";
 import {MenuComponent} from "../meals/menu/menu.component";
 import {SearchResultsComponent} from "../meals/menu/search-results/search-results.component";
+import {MealDetailsComponent} from "../meals/meal-details/meal-details.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'allUsers', component: AllUsersComponent},
   {path: 'addMeal', component: AddMealComponent},
   {path: 'menu', component: MenuComponent},
-  {path: 'searchResults', component: SearchResultsComponent}
+  {path: 'searchResults', component: SearchResultsComponent},
+  {path: 'mealDetails/:mealId', component: MealDetailsComponent}
 ];
 
 @NgModule({

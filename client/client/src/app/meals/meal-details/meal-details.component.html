@@ -1,0 +1,23 @@
+<div class="otherBody">
+  <h1 class="text-center">{{this.meal.name}}</h1>
+  <div class="col-sm-12 menu">
+    <div class="col-sm-4 formsList menuPart detailsDivs bg-yellowCustom">
+      <img class="detailsImage mealItem" src="{{this.meal.imageUrl}}" alt="Meal Image"/>
+      <div class="text-center" id="mealButtons">
+        <a href="#"><button class="btn btn-success">Add to cart</button></a>
+        <a href="#"><button class="btn btn-info">Edit</button></a>
+        <a href="#"><button class="btn btn-danger">Delete</button></a>
+      </div>
+    </div>
+    <div class="col-sm-8 menuList menuPart detailsDivs bg-yellowCustom">
+      <h4 class="text-left">Category:</h4>
+      <div class="detailsInfo">{{this.meal.category}} dish</div>
+      <h4 class="text-left">Description:</h4>
+      <div class="detailsInfo">{{this.meal.description}}</div>
+      <h4 class="text-left">Ingredients:</h4>
+      <div class="detailsInfo">{{this.meal.ingredients.join(',')}}</div>
+      <h4 class="text-left">Price:</h4>
+      <div class="detailsInfo" id="mealPrice">{{this.meal.price.toFixed(2)}}$</div>
+    </div>
+  </div>
+</div>

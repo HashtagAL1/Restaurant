@@ -12,6 +12,7 @@ import { FilterFormComponent } from './menu/filter-form/filter-form.component';
 import { SearchFormComponent } from './menu/search-form/search-form.component';
 import { SearchResultsComponent } from './menu/search-results/search-results.component';
 import {NgxNavigationWithDataComponent} from "ngx-navigation-with-data";
+import { MealDetailsComponent } from './meal-details/meal-details.component';
 
 @NgModule({
   imports: [
@@ -21,8 +22,16 @@ import {NgxNavigationWithDataComponent} from "ngx-navigation-with-data";
     ReactiveFormsModule,
     NgxPaginationModule
   ],
-  exports: [MenuComponent, AddMealComponent, FilterFormComponent, SearchFormComponent, SearchResultsComponent],
-  declarations: [MenuComponent, AddMealComponent, FilterFormComponent, SearchFormComponent, SearchResultsComponent],
-  providers: [AuthorizationService, MealService, NgxNavigationWithDataComponent]
+  exports: [
+    MenuComponent, AddMealComponent, FilterFormComponent, SearchFormComponent,
+    SearchResultsComponent, MealDetailsComponent
+  ],
+  declarations: [
+    MenuComponent, AddMealComponent, FilterFormComponent, SearchFormComponent,
+    SearchResultsComponent, MealDetailsComponent
+  ],
+  providers: [
+    AuthorizationService, MealService, NgxNavigationWithDataComponent
+  ]
 })
 export class MealsModule { }
