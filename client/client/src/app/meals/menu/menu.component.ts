@@ -3,6 +3,7 @@ import {AuthorizationService} from "../../services/authorization.service";
 import {Router} from "@angular/router";
 import {MealService} from "../../services/meal.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-menu',
@@ -19,7 +20,8 @@ export class MenuComponent implements OnInit {
 
   constructor(public auth: AuthorizationService,
               public router: Router,
-              public mealService: MealService) { }
+              public mealService: MealService,
+              public cartService: CartService) { }
 
   ngOnInit() {
     this.mealService.getAllMeals().subscribe((res) => {
@@ -34,6 +36,10 @@ export class MenuComponent implements OnInit {
         return;
     }
     this.meals = this.meals.sort((a, b) => b.price - a.price);
+  }
+
+  addToCart(meal) {
+    this.cartService.add(meal);
   }
 
 }

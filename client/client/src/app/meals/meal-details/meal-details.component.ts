@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {MealService} from "../../services/meal.service";
 import {NotifierService} from "angular-notifier";
+import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-meal-details',
@@ -15,7 +16,8 @@ export class MealDetailsComponent implements OnInit {
   constructor(public activatedRoute: ActivatedRoute,
               public router: Router,
               public mealService: MealService,
-              public notifier: NotifierService) { }
+              public notifier: NotifierService,
+              public cartService: CartService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
@@ -28,6 +30,10 @@ export class MealDetailsComponent implements OnInit {
         this.meal = res.meal;
       });
     });
+  }
+
+  addToCart() {
+    this.cartService.add(this.meal);
   }
 
   delete() {

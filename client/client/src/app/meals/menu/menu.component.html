@@ -25,7 +25,7 @@
               <div>Name: {{meal.name}}</div>
               <div>Price: {{meal.price}}$</div>
               <div>
-                <button class="btn btn-success">Add To Cart</button>
+                <button class="btn btn-success" (click)="this.addToCart(meal)">Add To Cart</button>
               </div>
             </div>
           </div>

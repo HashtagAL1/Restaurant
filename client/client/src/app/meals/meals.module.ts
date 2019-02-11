@@ -13,6 +13,7 @@ import { SearchFormComponent } from './menu/search-form/search-form.component';
 import { SearchResultsComponent } from './menu/search-results/search-results.component';
 import {NgxNavigationWithDataComponent} from "ngx-navigation-with-data";
 import { MealDetailsComponent } from './meal-details/meal-details.component';
+import {CartService} from "../services/cart.service";
 
 @NgModule({
   imports: [
@@ -31,7 +32,7 @@ import { MealDetailsComponent } from './meal-details/meal-details.component';
     SearchResultsComponent, MealDetailsComponent
   ],
   providers: [
-    AuthorizationService, MealService, NgxNavigationWithDataComponent
+    AuthorizationService, MealService, NgxNavigationWithDataComponent, CartService
   ]
 })
 export class MealsModule { }

@@ -4,7 +4,7 @@
     <div class="col-sm-4 formsList menuPart detailsDivs bg-yellowCustom">
       <img class="detailsImage mealItem" src="{{this.meal.imageUrl}}" alt="Meal Image"/>
       <div class="text-center" id="mealButtons">
-        <a href="#"><button class="btn btn-success">Add to cart</button></a>
+        <a><button class="btn btn-success" (click)="this.addToCart()">Add to cart</button></a>
         <a href="#"><button class="btn btn-info functionButton" id="editButton">Edit</button></a>
         <a (click)="this.delete()"><button class="btn btn-danger functionButton" id="deleteButton">Delete</button></a>
       </div>
