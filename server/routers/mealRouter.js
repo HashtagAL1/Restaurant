@@ -44,7 +44,7 @@ router.post('/edit/:mealId', (req, res) => {
 
 router.post('/delete/:mealId', (req, res) => {
     const mealId = req.params.mealId;
-    Meal.remove({_id: mealId})
+    Meal.deleteOne({_id: mealId})
         .then(() => {
             return res.status(200).json({
                 success: true,

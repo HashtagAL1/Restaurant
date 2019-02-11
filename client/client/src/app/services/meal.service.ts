@@ -33,4 +33,9 @@ export class MealService {
     return this.http.get(`http://localhost:3333/meals/singleMeal/${id}`);
   }
 
+  deleteMeal(id): Observable<any> {
+    return this.http.post(`http://localhost:3333/meals/delete/${id}`,
+      JSON.stringify({}), {headers: this.auth.createHeaders()});
+  }
+
 }

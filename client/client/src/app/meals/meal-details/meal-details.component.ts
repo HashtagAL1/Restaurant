@@ -10,7 +10,6 @@ import {NotifierService} from "angular-notifier";
 })
 export class MealDetailsComponent implements OnInit {
 
-  mealId: string;
   meal: any;
 
   constructor(public activatedRoute: ActivatedRoute,
@@ -29,6 +28,17 @@ export class MealDetailsComponent implements OnInit {
         this.meal = res.meal;
       });
     });
+  }
+
+  delete() {
+    this.mealService.deleteMeal(this.meal._id).subscribe((res) => {
+      if (!res.success) {
+          this.notifier.notify('danger', res.message);
+          return;
+      }
+      this.notifier.notify('success', res.message);
+      this.router.navigate(['/menu']);
+    })
   }
 
 }
