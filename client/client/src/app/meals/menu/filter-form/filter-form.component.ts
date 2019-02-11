@@ -13,7 +13,7 @@ export class FilterFormComponent implements OnInit {
 
   @Input() categories: any;
   filterForm = new FormGroup({
-    category: new FormControl('', [Validators.required])
+    category: new FormControl('main', [Validators.required])
   });
 
   constructor(public mealService: MealService,
@@ -27,7 +27,7 @@ export class FilterFormComponent implements OnInit {
     let category = this.filterForm.get('category').value;
     this.mealService.getAllMealsCategory(category).subscribe((res) => {
       if (!res.success) {
-        this.notifier.notify('warning', res.message);
+        this.notifier.notify('info', res.message);
         return;
       }
       category = category[0].toUpperCase() + category.slice(1);

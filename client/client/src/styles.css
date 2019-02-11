@@ -64,6 +64,7 @@ app-root {
 
 .detailsInfo {
   font-weight: bold;
+  color: black;
 }
 
 #mealPrice {
@@ -134,6 +135,26 @@ app-root {
   left: 0;
 
   text-align: center;
+}
+
+.functionButton {
+  margin-top: 2%;
+  background-color: #ffc200 !important;
+  border: none !important;
+  color: black !important;
+  font-weight: bold !important;
+}
+
+.functionButton:hover {
+  background-color: #b78f00 !important;
+}
+
+#editButton:hover {
+  background-color: #1a91ff !important;
+}
+
+#deleteButton:hover {
+  background-color: #f60909 !important;
 }
 
 

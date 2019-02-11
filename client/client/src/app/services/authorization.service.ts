@@ -41,7 +41,6 @@ export class AuthorizationService {
         if (this.helper.isTokenExpired(access_token)) {
             this.logout();
             this.notifier.notify('warning', 'Session expired. Please login again.');
-            this.router.navigate(['/']);
             return false;
         }
         return true;
@@ -51,7 +50,6 @@ export class AuthorizationService {
 
   register(username: string, password: string, email: string): Observable<any> {
     const payload = JSON.stringify({ username, password, email});
-    console.log(payload);
     return this.http.post('http://localhost:3333/auth/register', payload, {headers: this.createHeaders()});
   }
 
@@ -62,7 +60,7 @@ export class AuthorizationService {
 
   logout(): void {
     localStorage.clear();
-    this.notifier.notify('success', 'Logout successful');
+    this.notifier.notify('info', 'Logout successful');
     this.router.navigate(['/']);
   }
 

@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       }
       this.auth.signIn(res);
       this.notifier.notify('success', res.message);
-      this.router.navigate(['/']);
+      this.router.navigate(['/menu']);
     })
   }
 

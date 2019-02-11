@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
       }
       this.auth.signIn(res);
       this.notifierService.notify('success', res.message);
-      this.router.navigate(['/']);
+      this.router.navigate(['/menu']);
     })
   }
 
