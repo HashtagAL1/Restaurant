@@ -52,12 +52,23 @@ export class CartService {
     }
   }
 
+  removeItem(item) {
+    this.cart = this.initializeCart();
+    this.cart = this.cart.filter(i => i.meal._id !== item.meal._id);
+    this.saveData();
+  }
+
   getTotal() {
     this.cart = this.initializeCart();
     let tempTotal = 0.0;
     for (let item of this.cart) {
       tempTotal += Number(item.subtotal);
     }
-    return tempTotal;
+    return tempTotal.toFixed(2);
+  }
+
+  isEmpty() {
+    const temp = this.initializeCart();
+    return temp.length === 0;
   }
 }

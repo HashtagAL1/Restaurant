@@ -19,6 +19,11 @@ app-root {
   font-weight: bold;
 }
 
+.anouncement {
+  margin-top: 12%;
+  font-size: 300%;
+}
+
 .mealDescription div {
   padding: 4px;
 }

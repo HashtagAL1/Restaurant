@@ -11,6 +11,7 @@ export class MyCartComponent implements OnInit {
 
   cart: any;
   totalPrice: any;
+  refresh: boolean;
 
   constructor(public cartService: CartService,
               public router: Router) { }
@@ -18,6 +19,7 @@ export class MyCartComponent implements OnInit {
   ngOnInit() {
     this.cart = this.cartService.initializeCart();
     this.totalPrice = this.cartService.getTotal();
+    this.refresh = false;
   }
 
 }

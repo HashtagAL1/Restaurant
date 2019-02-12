@@ -10,7 +10,9 @@ export class CartItemComponent implements OnInit {
 
   @Input() item: any;
   @Input() totalPrice: any;
+  @Input() refresh: boolean;
   @Output() totalPriceChange = new EventEmitter();
+  @Output() refreshEvent = new EventEmitter();
 
   constructor(public cartService: CartService) { }
 
@@ -20,7 +22,15 @@ export class CartItemComponent implements OnInit {
   updateQty(qty) {
     this.item = this.cartService.updateQuantity(this.item, qty);
     this.totalPrice = this.cartService.getTotal();
-    this.totalPriceChange.emit(this.totalPrice.toFixed(2));
+    this.totalPriceChange.emit(this.totalPrice);
+  }
+
+  removeItem() {
+    this.cartService.removeItem(this.item);
+    this.totalPrice = this.cartService.getTotal();
+    this.totalPriceChange.emit(this.totalPrice);
+    this.refresh = true;
+    this.refreshEvent.emit(this.refresh);
   }
 
 }

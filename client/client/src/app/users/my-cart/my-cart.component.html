@@ -1,9 +1,12 @@
 <div class="bodyStyle">
   <h1 class="text-center">My Cart</h1>
-  <div class="marginTop">
+  <div *ngIf="this.cartService.isEmpty()" class="text-center font-weight-bold anouncement">
+    Currently, you have 0 items in your cart.
+  </div>
+  <div *ngIf="!this.cartService.isEmpty()" class="marginTop">
     <ul>
       <li *ngFor="let item of this.cart" class="cartItem">
-        <app-cart-item (totalPriceChange)="this.totalPrice = $event" [totalPrice]="this.totalPrice" [item]="item"></app-cart-item>
+        <app-cart-item [refresh]="this.refresh" (refreshEvent)="this.ngOnInit()" (totalPriceChange)="this.totalPrice = $event" [totalPrice]="this.totalPrice" [item]="item"></app-cart-item>
       </li>
     </ul>
 
