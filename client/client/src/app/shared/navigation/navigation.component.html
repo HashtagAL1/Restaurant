@@ -13,7 +13,7 @@
         <a class="nav-link linkColor" routerLink="/menu">Menu</a>
       </li>
       <li *ngIf="this.auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link linkColor" href="#">My Cart</a>
+        <a class="nav-link linkColor" routerLink="/myCart">My Cart</a>
       </li>
       <li *ngIf="this.auth.isLoggedIn()" class="nav-item">
         <a class="nav-link linkColor" href="#">My Orders</a>

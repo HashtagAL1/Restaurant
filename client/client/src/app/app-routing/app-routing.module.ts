@@ -9,6 +9,7 @@ import {AddMealComponent} from "../meals/add-meal/add-meal.component";
 import {MenuComponent} from "../meals/menu/menu.component";
 import {SearchResultsComponent} from "../meals/menu/search-results/search-results.component";
 import {MealDetailsComponent} from "../meals/meal-details/meal-details.component";
+import {MyCartComponent} from "../users/my-cart/my-cart.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'addMeal', component: AddMealComponent},
   {path: 'menu', component: MenuComponent},
   {path: 'searchResults', component: SearchResultsComponent},
-  {path: 'mealDetails/:mealId', component: MealDetailsComponent}
+  {path: 'mealDetails/:mealId', component: MealDetailsComponent},
+  {path: 'myCart', component: MyCartComponent}
 ];
 
 @NgModule({

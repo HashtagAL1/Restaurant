@@ -1,0 +1,11 @@
+<div class="bodyStyle">
+  <h1 class="text-center">My Cart</h1>
+  <div class="marginTop">
+    <app-cart-items-list [cart]="this.cart"></app-cart-items-list>
+    <div class="d-inline-block" id="totalPriceInfo">
+      Total Price: {{this.totalPrice}}$
+      <button class="btn btn-success functionButton">Take my order</button>
+    </div>
+  </div>
+
+</div>

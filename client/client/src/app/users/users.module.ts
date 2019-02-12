@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import {UserService} from "../services/user.service";
 import {RouterModule} from "@angular/router";
 import {AllUsersComponent} from "./all-users/all-users.component";
+import { MyCartComponent } from './my-cart/my-cart.component';
+import { CartItemsListComponent } from './my-cart/cart-items-list/cart-items-list.component';
 
 @NgModule({
   imports: [
@@ -16,7 +18,7 @@ import {AllUsersComponent} from "./all-users/all-users.component";
     RouterModule
   ],
   exports: [RegisterComponent, LoginComponent],
-  declarations: [RegisterComponent, LoginComponent, AllUsersComponent],
+  declarations: [RegisterComponent, LoginComponent, AllUsersComponent, MyCartComponent, CartItemsListComponent],
   providers: [UserService]
 })
 export class UsersModule { }

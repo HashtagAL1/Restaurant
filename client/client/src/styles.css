@@ -5,6 +5,10 @@ app-root {
   height: 100%;
 }
 
+#qtyInput {
+  width: 50%;
+}
+
 .formBody {
   margin-left: 38%;
   margin-top: 3%;
@@ -17,6 +21,27 @@ app-root {
 
 .mealDescription div {
   padding: 4px;
+}
+
+.cartItem {
+  margin-bottom: 3%;
+  padding: 1%;
+  margin-right: 3%;
+  border-radius: 20px;
+}
+
+#totalPriceInfo {
+  font-size: x-large;
+  font-weight: bold;
+  margin-left: 6%;
+}
+
+.cartItem:hover {
+  background-color: #ffc200;
+}
+
+ul {
+  list-style-type: none;
 }
 
 .mealItem {
@@ -41,15 +66,20 @@ app-root {
 
 .detailsImage {
   width: 100%;
-  height: inherit;
+  height: 80%;
+  padding-top: 10%;
 }
 
 #logo {
   height: 500px;
 }
 
+#addButton:hover {
+  background-color: #079601 !important;
+}
+
 .detailsDivs {
-  height: 330px;
+  height: 430px;
 }
 
 .topOfPage {

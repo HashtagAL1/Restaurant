@@ -3,15 +3,6 @@
   <div class="col-sm-12 marginTop">
     <div class="col-sm-4 formsList d-inline-block detailsDivs bg-yellowCustom">
       <img class="detailsImage" src="{{this.meal.imageUrl}}" alt="Meal Image"/>
-      <div class="text-center marginTop" id="mealButtons">
-        <div *ngIf="!this.auth.isLoggedIn()" class="alert alert-dismissible alert-info">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <strong>You need to <a routerLink="/">login</a>, in order to be able to add this meal to your cart.</strong>
-        </div>
-        <a *ngIf="this.auth.isLoggedIn()"><button class="btn btn-success" (click)="this.addToCart()">Add to cart</button></a>
-        <a *ngIf="this.auth.isModerator()" href="#"><button class="btn btn-info functionButton" id="editButton">Edit</button></a>
-        <a *ngIf="this.auth.isModerator()" (click)="this.delete()"><button class="btn btn-danger functionButton" id="deleteButton">Delete</button></a>
-      </div>
     </div>
     <div class="col-sm-8 float-right d-inline-block detailsDivs bg-yellowCustom">
       <h4 class="text-lg-left font-weight-bold">Category:</h4>
@@ -21,6 +12,15 @@
       <h4 class="text-lg-left font-weight-bold">Ingredients:</h4>
       <div class="generalText">{{this.meal.ingredients.join(',')}}</div>
       <h4 class="text-lg-left font-weight-bold">Price: {{this.meal.price.toFixed(2)}}$</h4>
+      <div class="text-center marginTop" id="mealButtons">
+        <div *ngIf="!this.auth.isLoggedIn()" class="alert alert-dismissible alert-info">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <strong>You need to <a routerLink="/">login</a>, in order to be able to add this meal to your cart.</strong>
+        </div>
+        <a *ngIf="this.auth.isLoggedIn()"><button class="btn btn-success functionButton" id="addButton" (click)="this.addToCart()">Add to cart</button></a>
+        <a *ngIf="this.auth.isModerator()" href="#"><button class="btn btn-info functionButton" id="editButton">Edit</button></a>
+        <a *ngIf="this.auth.isModerator()" (click)="this.delete()"><button class="btn btn-danger functionButton" id="deleteButton">Delete</button></a>
+      </div>
     </div>
   </div>
 </div>

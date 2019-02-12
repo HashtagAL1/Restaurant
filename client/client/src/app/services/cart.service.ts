@@ -39,4 +39,33 @@ export class CartService {
   saveData() {
     localStorage.setItem('cart', JSON.stringify(this.cart));
   }
+
+  updateQty(meal, newQty) {
+    this.cart = this.initializeCart();
+    for (let item of this.cart) {
+      if (item.meal._id === meal._id) {
+          item.qty = newQty;
+          item.subtotal = Number(item.qty) * Number(item.meal.price);
+          this.saveData();
+          break;
+      }
+    }
+    return this.cart;
+  }
+
+  getTotal() {
+    this.cart = this.initializeCart();
+    let tempTotal = 0.0;
+    for (let item of this.cart) {
+      tempTotal += Number(item.subtotal);
+    }
+    return tempTotal;
+  }
+
+  removeItem(meal) {
+    this.cart = this.initializeCart();
+    this.cart = this.cart.filter(item => item.meal._id !== meal._id);
+    this.saveData();
+    return this.cart;
+  }
 }
