@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {MealService} from "../../services/meal.service";
 import {NotifierService} from "angular-notifier";
 import {CartService} from "../../services/cart.service";
+import {AuthorizationService} from "../../services/authorization.service";
 
 @Component({
   selector: 'app-meal-details',
@@ -17,7 +18,8 @@ export class MealDetailsComponent implements OnInit {
               public router: Router,
               public mealService: MealService,
               public notifier: NotifierService,
-              public cartService: CartService) { }
+              public cartService: CartService,
+              public auth: AuthorizationService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {

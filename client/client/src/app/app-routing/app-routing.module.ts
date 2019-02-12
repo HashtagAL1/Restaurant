@@ -12,8 +12,6 @@ import {MealDetailsComponent} from "../meals/meal-details/meal-details.component
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: LoginComponent},
   {path: 'allUsers', component: AllUsersComponent},
   {path: 'addMeal', component: AddMealComponent},
   {path: 'menu', component: MenuComponent},

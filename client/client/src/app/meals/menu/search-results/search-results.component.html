@@ -1,15 +1,15 @@
-<div class="otherBody">
+<div class="bodyStyle">
   <h1 class="text-center">{{this.title}}</h1>
   <div class="col-sm-12">
     <ul>
-      <li *ngFor="let meal of this.results | paginate: { itemsPerPage: 10, currentPage: p }" class="mealItem menuPart col-sm-3">
+      <li *ngFor="let meal of this.results | paginate: { itemsPerPage: 10, currentPage: p }" class="mealItem d-inline-block col-sm-3">
         <div>
-          <a href="#"><img class="mealImage" src="{{meal.imageUrl}}"/></a>
+          <a routerLink="/mealDetails/{{meal._id}}"><img class="mealImage" src="{{meal.imageUrl}}"/></a>
           <div class="mealDescription">
             <div>Name: {{meal.name}}</div>
             <div>Price: {{meal.price}}$</div>
             <div>
-              <button class="btn btn-success">Add To Cart</button>
+              <button (click)="this.addToCart(meal)" class="btn btn-success">Add To Cart</button>
             </div>
           </div>
         </div>

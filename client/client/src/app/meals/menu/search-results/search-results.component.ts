@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {NgxNavigationWithDataComponent} from "ngx-navigation-with-data";
+import {CartService} from "../../../services/cart.service";
+import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'app-search-results',
@@ -12,11 +14,20 @@ export class SearchResultsComponent implements OnInit {
   results: any;
   title: string;
 
-  constructor(public navCtrl: NgxNavigationWithDataComponent) { }
+  constructor(public navCtrl: NgxNavigationWithDataComponent,
+              public cartService: CartService,
+              public router: Router) { }
 
   ngOnInit() {
     this.results = this.navCtrl.get('data');
     this.title = this.navCtrl.get('title');
+    if (isNullOrUndefined(this.results)) {
+        this.router.navigate(['/menu']);
+    }
+  }
+
+  addToCart(meal) {
+    this.cartService.add(meal);
   }
 
 }

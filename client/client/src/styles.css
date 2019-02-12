@@ -1,18 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+@import "../node_modules/angular-notifier/styles.css";
+
 app-root {
   height: 100%;
 }
 
 .formBody {
   margin-left: 38%;
-  margin-top: 3%;
-}
-
-.menuPart {
-  display: inline-block;
-}
-
-.menu {
   margin-top: 3%;
 }
 
@@ -50,8 +44,22 @@ app-root {
   height: inherit;
 }
 
+#logo {
+  height: 500px;
+}
+
 .detailsDivs {
   height: 330px;
+}
+
+.topOfPage {
+  float: left;
+  padding-bottom: 99999px;
+  margin-bottom: -99999px;
+}
+
+#homeScreen {
+  overflow: hidden;
 }
 
 #mealButtons button {
@@ -60,15 +68,6 @@ app-root {
 
 .bg-yellowCustom {
   background-color: #ffc200;
-}
-
-.detailsInfo {
-  font-weight: bold;
-  color: black;
-}
-
-#mealPrice {
-  font-size: x-large;
 }
 
 .paginationCustom {
@@ -80,16 +79,6 @@ app-root {
   width: 50%;
   margin-left: 25%;
 }
-
-.menuList {
-  float: right;
-}
-
-.formsList {
-  float: left;
-}
-
-
 
 .paginationCustom /deep/ .ngx-pagination .current {
   background-color: #ffc200;
@@ -111,30 +100,13 @@ app-root {
   color: black;
 }
 
-.otherBody {
+.bodyStyle {
   background-color: #f8ff77;
   position: absolute;
   width: 100%;
   min-height: 100%;
   top: 9%;
   left: 0;
-}
-
-.homeBody {
-  background-image: url('./assets/background.jpg');
-  min-height: 100%;
-  min-width: 100%;
-
-  /* Set up proportionate scaling */
-  width: 100%;
-  height: 100%;
-
-  /* Set up positioning */
-  position: fixed;
-  top: 9%;
-  left: 0;
-
-  text-align: center;
 }
 
 .functionButton {
@@ -157,124 +129,12 @@ app-root {
   background-color: #f60909 !important;
 }
 
-
-.formLabel {
+.generalText {
   font-size: 18px;
-  color: #22251e;
+  color: black;
   font-weight: bold;
 }
-
-#mealButtons {
+.marginTop {
   margin-top: 3%;
 }
 
-.notifier__container * {
-  box-sizing: border-box;
-}
-
-.notifier__container-list {
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 0;
-  list-style-type: none;
-}
-
-.notifier__notification {
-  display: block;
-  position: fixed;
-  visibility: hidden;
-  z-index: 10000;
-  will-change: transform;
-  backface-visibility: hidden;
-}
-
-.notifier__notification--material {
-  border-radius: 3px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  cursor: default;
-  padding-top: 11px;
-  padding-right: 26px;
-  padding-bottom: 10px;
-  padding-left: 26px;
-}
-
-.notifier__notification--material .notifier__notification-message {
-  display: inline-block;
-  margin-top: 0;
-  margin-bottom: 0;
-  vertical-align: top;
-  line-height: 32px;
-  font-size: 15px;
-}
-
-.notifier__notification--material .notifier__notification-button {
-  display: inline-block;
-  transition: opacity .2s ease;
-  opacity: .5;
-  margin-right: -10px;
-  margin-left: 10px;
-  outline: none;
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 6px;
-  width: 32px;
-  height: 32px;
-  vertical-align: top;
-}
-
-.notifier__notification--material .notifier__notification-button:hover, .notifier__notification--material .notifier__notification-button:focus {
-  opacity: 1;
-}
-
-.notifier__notification--material .notifier__notification-button:active {
-  transform: scale(0.82);
-  opacity: 1;
-}
-
-.notifier__notification--default {
-  background-color: #444;
-  color: #FFF;
-}
-
-.notifier__notification--default .notifier__notification-button-icon {
-  fill: #FFF;
-}
-
-.notifier__notification--error {
-  background-color: #D9534F;
-  color: #FFF;
-}
-
-.notifier__notification--error .notifier__notification-button-icon {
-  fill: #FFF;
-}
-
-.notifier__notification--info {
-  background-color: #5BC0DE;
-  color: #FFF;
-}
-
-.notifier__notification--info .notifier__notification-button-icon {
-  fill: #FFF;
-}
-
-.notifier__notification--success {
-  background-color: #5CB85C;
-  color: #FFF;
-}
-
-.notifier__notification--success .notifier__notification-button-icon {
-  fill: #FFF;
-}
-
-.notifier__notification--warning {
-  background-color: #F0AD4E;
-  color: #FFF;
-}
-
-.notifier__notification--warning .notifier__notification-button-icon {
-  fill: #FFF;
-}
-
-/*# sourceMappingURL=styles.css.map */

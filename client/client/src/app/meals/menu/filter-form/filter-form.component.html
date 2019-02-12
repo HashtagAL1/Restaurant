@@ -1,7 +1,7 @@
 <form id="filterForm" [formGroup]="this.filterForm" (ngSubmit)="this.filter()">
   <h3>Filter</h3>
   <div class="form-group">
-    <label class="formLabel" for="category">Category</label>
+    <label class="generalText" for="category">Category</label>
     <select class="form-control" formControlName="category" id="category">
       <option *ngFor="let c of this.categories" value="{{c.toLowerCase()}}">{{c}}</option>
     </select>

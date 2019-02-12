@@ -1,7 +1,7 @@
 <form [formGroup]="this.searchForm" (ngSubmit)="this.search()">
   <h3>Search by name:</h3>
   <div class="form-group">
-    <label class="formLabel" for="query">Name</label>
+    <label class="generalText" for="query">Name</label>
     <input type="text" id="query" class="form-control" formControlName="query" placeholder="Enter a dish name"/>
     <button type="submit" [disabled]="this.searchForm.invalid" class="btn btn-info functionButton">Search</button>
   </div>

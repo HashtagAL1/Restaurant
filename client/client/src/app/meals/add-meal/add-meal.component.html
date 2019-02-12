@@ -1,17 +1,17 @@
-<div class="otherBody">
+<div class="bodyStyle">
   <div class="formBody" id="addMealScreen">
     <div class="col-sm-5">
       <form [formGroup]="this.addForm" (ngSubmit)="this.addMeal()">
         <fieldset>
           <div class="form-group">
-            <label class="formLabel" for="mealName">Meal name</label>
+            <label class="generalText" for="mealName">Meal name</label>
             <input type="text" class="form-control" id="mealName" formControlName="name" placeholder="Enter meal name"/>
             <div *ngIf="this.addForm.get('name').touched && this.addForm.get('name').invalid" class="alert alert-danger">
               <div *ngIf="this.addForm.get('name').errors.required">This field is required</div>
             </div>
           </div>
           <div class="form-group">
-            <label class="formLabel" for="price">Meal price</label>
+            <label class="generalText" for="price">Meal price</label>
             <div class="input-group-prepend">
               <span class="input-group-text">$</span>
               <input type="text" class="form-control" id="price" formControlName="price" aria-describedby="emailHelp"
@@ -25,7 +25,7 @@
           </div>
 
           <div class="form-group">
-            <label class="formLabel" for="imageUrl">Image</label>
+            <label class="generalText" for="imageUrl">Image</label>
             <input type="text" class="form-control" formControlName="imageUrl" id="imageUrl" placeholder="Enter image URL">
             <div *ngIf="this.addForm.get('imageUrl').touched && this.addForm.get('imageUrl').invalid" class="alert alert-danger">
               <div *ngIf="this.addForm.get('imageUrl').errors.required">This field is required</div>
@@ -33,20 +33,20 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="formLabel" for="category">Category</label>
+            <label class="generalText" for="category">Category</label>
             <select class="form-control" id="category" formControlName="category">
               <option *ngFor="let c of this.categories" [selected]="c === 'Main'" value="{{c.toLowerCase()}}">{{c}}</option>
             </select>
           </div>
           <div class="form-group">
-            <label class="formLabel" for="ingredients">Ingredients</label>
+            <label class="generalText" for="ingredients">Ingredients</label>
             <textarea class="form-control" id="ingredients" formControlName="ingredients" placeholder="Enter ingredients"></textarea>
           </div>
           <div class="form-group">
-            <label class="formLabel" for="description">Description</label>
+            <label class="generalText" for="description">Description</label>
             <textarea class="form-control" id="description" formControlName="description" placeholder="Enter description"></textarea>
           </div>
-          <button [disabled]="!this.addForm.valid" type="submit" class="btn btn-success">Add Meal</button>
+          <button [disabled]="!this.addForm.valid" type="submit" class="btn btn-success functionButton">Add Meal</button>
         </fieldset>
       </form>
     </div>

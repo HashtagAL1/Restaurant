@@ -4,7 +4,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarColor01">
+  <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link linkColor" routerLink="/">Home <span class="sr-only">(current)</span></a>
@@ -27,16 +27,22 @@
       <li *ngIf="this.auth.isAdmin()" class="nav-item">
         <a class="nav-link linkColor" routerLink="/allUsers">Users</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link linkColor" routerLink="/aboutUs">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link linkColor" routerLink="/contactUs">Contact Us</a>
+      </li>
     </ul>
     <ul class="navbar-nav mr-sm-2">
       <li *ngIf="!this.auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link linkColor" routerLink="/login">Login</a>
+        <a class="nav-link linkColor" routerLink="/">Login</a>
       </li>
       <li *ngIf="this.auth.isLoggedIn()" class="nav-item">
         <a class="nav-link linkColor" href="#" (click)="this.auth.logout()">Logout</a>
       </li>
       <li *ngIf="!this.auth.isLoggedIn()" class="nav-item">
-        <a class="nav-link linkColor" routerLink="/register">Register</a>
+        <a class="nav-link linkColor" routerLink="/">Register</a>
       </li>
     </ul>
   </div>

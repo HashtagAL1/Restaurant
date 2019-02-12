@@ -1,6 +1,28 @@
-<div class="homeBody">
-  <blockquote class="blockquote">
-    <p class="mb-0">There is no sincere love than the love of food.</p>
-    <footer class="blockquote-footer">George Bernard Shaw</footer>
-  </blockquote>
+<div class="bodyStyle">
+  <div class="col-sm-12 marginTop" id="homeScreen">
+    <div class="col-sm-3 d-inline-block topOfPage">
+      <app-login *ngIf="!this.auth.isLoggedIn()"></app-login>
+      <div *ngIf="this.auth.isLoggedIn()" class="text-left generalText">
+        <h4>Contact us</h4>
+        You can contact us via Phone, Email or you can give us a visit at one of our restaurants.
+        Learn more here:<br>
+        <a><button class="btn btn-info functionButton">Contact Us</button></a>
+      </div>
+    </div>
+    <div class="col-sm-6 d-inline-block topOfPage">
+      <h1 class="text-center">Welcome to #Restaurant!</h1>
+      <div class="text-left generalText" id="logo">
+        <img src="../../../assets/newBackground.jpg" class="detailsImage"/>
+      </div>
+    </div>
+    <div class="col-sm-3 d-inline-block topOfPage">
+      <app-register *ngIf="!this.auth.isLoggedIn()"></app-register>
+      <div  *ngIf="this.auth.isLoggedIn()" class="text-left generalText">
+        <h4>About Us</h4>
+        We are an all-round meal restaurant and have a several restaurants in Sofia.
+        If you would like to learn more about us, click here:<br>
+        <a><button class="btn btn-info functionButton">About Us</button></a>
+      </div>
+    </div>
+  </div>
 </div>

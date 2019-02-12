@@ -15,7 +15,7 @@ import {AllUsersComponent} from "./all-users/all-users.component";
     HttpClientModule,
     RouterModule
   ],
-  exports: [RegisterComponent, LoginComponent, AllUsersComponent],
+  exports: [RegisterComponent, LoginComponent],
   declarations: [RegisterComponent, LoginComponent, AllUsersComponent],
   providers: [UserService]
 })
