@@ -1,7 +1,12 @@
 <div class="bodyStyle">
   <h1 class="text-center">My Cart</h1>
   <div class="marginTop">
-    <app-cart-items-list [cart]="this.cart"></app-cart-items-list>
+    <ul>
+      <li *ngFor="let item of this.cart" class="cartItem">
+        <app-cart-item (totalPriceChange)="this.totalPrice = $event" [totalPrice]="this.totalPrice" [item]="item"></app-cart-item>
+      </li>
+    </ul>
+
     <div class="d-inline-block" id="totalPriceInfo">
       Total Price: {{this.totalPrice}}$
       <button class="btn btn-success functionButton">Take my order</button>

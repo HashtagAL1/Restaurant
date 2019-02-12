@@ -1,0 +1,23 @@
+<div class="col-sm-12">
+  <div class="col-sm-3 d-inline-block">
+    <a routerLink="/mealDetails/{{this.item.meal._id}}"><img class="mealImage" src="{{this.item.meal.imageUrl}}"/></a>
+  </div>
+  <div class="col-sm-2 d-inline-block">
+    <h4 class="text-center">Meal:</h4>
+    <div class="text-center font-weight-bold">{{this.item.meal.name}}</div>
+  </div>
+  <div class="col-sm-3 d-inline-block">
+    <h4 class="text-center">Quantity:</h4>
+    <div class="text-center">
+      <input (change)="this.updateQty($event.target.value)" type="number" min="1"
+             class="form-control d-inline-block" id="qtyInput" [value]="this.item.qty"/>
+    </div>
+  </div>
+  <div class="col-sm-2 d-inline-block">
+    <h4 class="text-center">Subtotal:</h4>
+    <div class="text-center font-weight-bold" [textContent]="this.item.subtotal.toFixed(2)"></div>
+  </div>
+  <div class="col-sm-2 d-inline-block">
+    <button type="button" class="btn btn-danger">Remove</button>
+  </div>
+</div>

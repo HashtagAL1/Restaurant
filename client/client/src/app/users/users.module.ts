@@ -8,7 +8,7 @@ import {UserService} from "../services/user.service";
 import {RouterModule} from "@angular/router";
 import {AllUsersComponent} from "./all-users/all-users.component";
 import { MyCartComponent } from './my-cart/my-cart.component';
-import { CartItemsListComponent } from './my-cart/cart-items-list/cart-items-list.component';
+import { CartItemComponent } from './my-cart/cart-item/cart-item.component';
 
 @NgModule({
   imports: [
@@ -18,7 +18,7 @@ import { CartItemsListComponent } from './my-cart/cart-items-list/cart-items-lis
     RouterModule
   ],
   exports: [RegisterComponent, LoginComponent],
-  declarations: [RegisterComponent, LoginComponent, AllUsersComponent, MyCartComponent, CartItemsListComponent],
+  declarations: [RegisterComponent, LoginComponent, AllUsersComponent, MyCartComponent, CartItemComponent],
   providers: [UserService]
 })
 export class UsersModule { }

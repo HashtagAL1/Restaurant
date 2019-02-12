@@ -40,17 +40,16 @@ export class CartService {
     localStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
-  updateQty(meal, newQty) {
+  updateQuantity(item, newQty) {
     this.cart = this.initializeCart();
-    for (let item of this.cart) {
-      if (item.meal._id === meal._id) {
-          item.qty = newQty;
-          item.subtotal = Number(item.qty) * Number(item.meal.price);
+    for (let i of this.cart) {
+      if (i.meal._id === item.meal._id) {
+          i.qty = newQty;
+          i.subtotal = Number(i.qty) * Number(i.meal.price);
           this.saveData();
-          break;
+          return i;
       }
     }
-    return this.cart;
   }
 
   getTotal() {
@@ -60,12 +59,5 @@ export class CartService {
       tempTotal += Number(item.subtotal);
     }
     return tempTotal;
-  }
-
-  removeItem(meal) {
-    this.cart = this.initializeCart();
-    this.cart = this.cart.filter(item => item.meal._id !== meal._id);
-    this.saveData();
-    return this.cart;
   }
 }
