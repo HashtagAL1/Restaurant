@@ -14,6 +14,8 @@ import { SearchResultsComponent } from './menu/search-results/search-results.com
 import {NgxNavigationWithDataComponent} from "ngx-navigation-with-data";
 import { MealDetailsComponent } from './meal-details/meal-details.component';
 import {CartService} from "../services/cart.service";
+import { SortFormComponent } from './menu/sort-form/sort-form.component';
+import { MealListComponent } from './menu/meal-list/meal-list.component';
 
 @NgModule({
   imports: [
@@ -29,7 +31,7 @@ import {CartService} from "../services/cart.service";
   ],
   declarations: [
     MenuComponent, AddMealComponent, FilterFormComponent, SearchFormComponent,
-    SearchResultsComponent, MealDetailsComponent
+    SearchResultsComponent, MealDetailsComponent, SortFormComponent, MealListComponent
   ],
   providers: [
     AuthorizationService, MealService, NgxNavigationWithDataComponent, CartService

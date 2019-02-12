@@ -4,34 +4,10 @@
     <div class="col-sm-3 d-inline-block float-left">
       <app-filter-form [categories]="this.categories"></app-filter-form>
       <app-search-form></app-search-form>
-      <form [formGroup]="this.sortForm" (ngSubmit)="this.sort()">
-        <div class="form-group">
-          <h3>Sort by price:</h3>
-          <label class="generalText" for="criteria">Criteria:</label>
-          <select class="form-control" id="criteria" formControlName="criteria">
-            <option value="ascending">Ascending</option>
-            <option value="descending">Descending</option>
-          </select>
-          <button class="btn btn-info functionButton">Sort</button>
-        </div>
-      </form>
+      <app-sort-form [meals]="this.meals"></app-sort-form>
     </div>
     <div class="col-sm-9 d-inline-block float-right">
-      <ul>
-        <li *ngFor="let meal of this.meals | paginate: { itemsPerPage: 10, currentPage: p }" class="mealItem d-inline-block col-sm-4">
-          <div>
-            <a routerLink="/mealDetails/{{meal._id}}"><img title="Click for more details" class="mealImage" src="{{meal.imageUrl}}"/></a>
-            <div class="mealDescription">
-              <div>Name: {{meal.name}}</div>
-              <div>Price: {{meal.price}}$</div>
-              <div *ngIf="this.auth.isLoggedIn()">
-                <button class="btn btn-success" (click)="this.addToCart(meal)">Add To Cart</button>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-      <pagination-controls class="paginationCustom" (pageChange)="p = $event"></pagination-controls>
+      <app-meal-list [meals]="this.meals"></app-meal-list>
     </div>
   </div>
 </div>

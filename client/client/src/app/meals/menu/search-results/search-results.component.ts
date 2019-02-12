@@ -11,7 +11,7 @@ import {isNullOrUndefined} from "util";
 })
 export class SearchResultsComponent implements OnInit {
 
-  results: any;
+  meals: any;
   title: string;
 
   constructor(public navCtrl: NgxNavigationWithDataComponent,
@@ -19,9 +19,9 @@ export class SearchResultsComponent implements OnInit {
               public router: Router) { }
 
   ngOnInit() {
-    this.results = this.navCtrl.get('data');
+    this.meals = this.navCtrl.get('data');
     this.title = this.navCtrl.get('title');
-    if (isNullOrUndefined(this.results)) {
+    if (isNullOrUndefined(this.meals)) {
         this.router.navigate(['/menu']);
     }
   }

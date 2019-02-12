@@ -1,0 +1,16 @@
+<ul>
+  <li *ngFor="let meal of this.meals | paginate: { itemsPerPage: 10, currentPage: p }" class="mealItem d-inline-block col-sm-4">
+    <div>
+      <a routerLink="/mealDetails/{{meal._id}}"><img title="Click for more details" class="mealImage" src="{{meal.imageUrl}}"/></a>
+      <div class="mealDescription">
+        <div>Name: {{meal.name}}</div>
+        <div>Price: {{meal.price}}$</div>
+        <div *ngIf="this.auth.isLoggedIn()">
+          <button class="btn btn-success" (click)="this.addToCart(meal)">Add To Cart</button>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>
+<div *ngIf="this.meals.length <= 10" class="text-center font-weight-bold">Here's only one page</div>
+<pagination-controls *ngIf="this.meals.length > 10" class="paginationCustom" (pageChange)="p = $event"></pagination-controls>
