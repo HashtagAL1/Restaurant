@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthorizationService} from "../../services/authorization.service";
 import {Router} from "@angular/router";
-import {Subscription} from "rxjs/index";
 import {UserService} from "../../services/user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {NotifierService} from "angular-notifier";
@@ -13,10 +11,9 @@ import {NotifierService} from "angular-notifier";
 })
 export class AllUsersComponent implements OnInit {
 
+  p: any;
   allUsers: any;
-  updateForm = new FormGroup({
-    role: new FormControl('')
-  });
+  refresh: boolean;
   searchForm = new FormGroup({
     username: new FormControl('', [Validators.minLength(5), Validators.required])
   });
@@ -29,38 +26,11 @@ export class AllUsersComponent implements OnInit {
     this.userService.getAllUsers().subscribe((res) => {
       this.allUsers = res.users;
     });
-  }
-
-  setRowClass(user): string {
-    switch (user.role) {
-      case 'user': return 'table-primary';
-      case 'admin': return 'table-success';
-      case 'deliverer': return 'table-warning';
-      case 'moderator': return 'table-danger';
-    }
-  }
-
-  updateUser(user) {
-    const role = this.updateForm.get('role').value;
-    let notificationType = 'success';
-    if (role === user.role) {
-        this.notifier.notify('info', `User already has the role of: ${role}`);
-        return;
-    }
-    this.userService.updateUser(user._id, role).subscribe((res) => {
-      if (!res.success) {
-          notificationType = 'danger';
-          return;
-      }
-      this.notifier.notify(notificationType, res.message);
-      this.router.navigate(['/allUsers']);
-      this.ngOnInit();
-    });
+    this.refresh = false;
   }
 
   findUser() {
     const username = this.searchForm.get('username').value;
-    console.log(username);
     if (username === '') {
         this.ngOnInit();
         return;
@@ -70,6 +40,14 @@ export class AllUsersComponent implements OnInit {
         this.notifier.notify('info', 'No users found.');
         this.ngOnInit();
     }
+  }
+
+  getButtonValue() {
+    const query = this.searchForm.get('username').value;
+    if (query === '') {
+        return 'Find All'
+    }
+    return 'Search';
   }
 
 

@@ -9,16 +9,19 @@ import {RouterModule} from "@angular/router";
 import {AllUsersComponent} from "./all-users/all-users.component";
 import { MyCartComponent } from './my-cart/my-cart.component';
 import { CartItemComponent } from './my-cart/cart-item/cart-item.component';
+import { UserRowComponent } from './all-users/user-row/user-row.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
   ],
   exports: [RegisterComponent, LoginComponent],
-  declarations: [RegisterComponent, LoginComponent, AllUsersComponent, MyCartComponent, CartItemComponent],
+  declarations: [RegisterComponent, LoginComponent, AllUsersComponent, MyCartComponent, CartItemComponent, UserRowComponent],
   providers: [UserService]
 })
 export class UsersModule { }

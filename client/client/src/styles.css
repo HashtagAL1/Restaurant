@@ -9,10 +9,24 @@ app-root {
   width: 50%;
 }
 
+.thin {
+  width: 200px;
+}
+
 .formBody {
   margin-left: 38%;
   margin-top: 3%;
 }
+
+.marginLeft {
+  margin-left: 15%;
+}
+
+.userRow {
+  border: 1px solid white;
+  border-radius: 15px;
+}
+
 
 .mealDescription {
   background-color: #fff37d;
@@ -39,6 +53,12 @@ app-root {
   font-size: x-large;
   font-weight: bold;
   margin-left: 6%;
+}
+
+.heading {
+  font-weight: bold;
+  font-size: x-large;
+  padding: 1%;
 }
 
 .cartItem:hover {

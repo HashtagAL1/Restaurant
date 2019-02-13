@@ -1,40 +1,20 @@
 <div class="bodyStyle">
-  <div class="col-sm-12" id="usersTable">
-    <div class="col-sm-12">
-      <table class="table table-hover">
-        <thead>
-        <tr class="table-dark">
-          <th>Username</th>
-          <th>Email</th>
-          <th>Role</th>
-          <th>
-            <form [formGroup]="this.searchForm" (ngSubmit)="this.findUser()">
-              <input type="text" class="form-control insideFormElements thin" formControlName="username" placeholder="Enter username"/>
-              <input type="submit" class="btn btn-info insideFormElements"
-                     [value]="this.searchForm.get('username').value === '' ? 'Find All' : 'Search'"/>
-            </form>
-          </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let user of this.allUsers" [className]="this.setRowClass(user)">
-          <td>{{user.username}}</td>
-          <td>{{user.email}}</td>
-          <td>
-            <form [formGroup]="this.updateForm" (ngSubmit)="this.updateUser(user)">
-              <select formControlName="role" class="form-control insideFormElements thin">
-                <option [selected]="user.role == 'admin'" value="admin">Admin</option>
-                <option [selected]="user.role == 'moderator'" value="moderator">Moderator</option>
-                <option [selected]="user.role == 'deliverer'" value="deliverer">Deliverer</option>
-                <option [selected]="user.role == 'user'" value="user">User</option>
-              </select>
-              <button type="submit" class="btn btn-dark insideFormElements">Update Role</button>
-            </form>
-          </td>
-          <td></td>
-        </tr>
-        </tbody>
-      </table>
+  <h1 class="text-center marginTop">All Users</h1>
+  <div class="col-sm-12 marginTop text-center bg-yellowCustom" id="headerTable">
+    <div class="heading col-sm-3 d-inline-block">Username</div>
+    <div class="heading col-sm-3 d-inline-block">Email</div>
+    <div class="heading col-sm-3 d-inline-block">Update Role</div>
+    <div class="heading col-sm-3 d-inline-block">
+      <form class="form-inline" [formGroup]="this.searchForm" (ngSubmit)="findUser()">
+        <input formControlName="username" type="text" class="form-control thin" placeholder="Username..."/>
+        <input type="submit" class="btn btn-success marginLeft functionButton"
+                [value]="this.getButtonValue()"/>
+      </form>
     </div>
   </div>
+  <div *ngFor="let user of this.allUsers | paginate: { itemsPerPage: 10, currentPage: p }" class="col-sm-12 text-center font-weight-bold">
+    <app-user-row (roleChange)="this.ngOnInit()" [refresh]="this.refresh" [user]="user"></app-user-row>
+  </div>
+  <div *ngIf="this.allUsers.length <= 10" class="text-center font-weight-bold">Here's only one page</div>
+  <pagination-controls *ngIf="this.allUsers.length > 10" class="paginationCustom" (pageChange)="p = $event"></pagination-controls>
 </div>

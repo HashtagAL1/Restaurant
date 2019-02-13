@@ -1,0 +1,16 @@
+<div class="userRow" [className]="this.setRowClass()">
+  <div class="col-sm-3 d-inline-block text-center">{{this.user.username}}</div>
+  <div class="col-sm-3 d-inline-block text-center">{{this.user.email}}</div>
+  <div class="col-sm-3 d-inline-block text-center">
+  <form class="form-inline" (ngSubmit)="this.updateUser()" [formGroup]="this.updateForm">
+    <select formControlName="role" class="form-control">
+      <option [selected]="this.user.role === 'admin'" value="admin">Admin</option>
+      <option [selected]="this.user.role === 'moderator'" value="moderator">Moderator</option>
+      <option [selected]="this.user.role === 'deliverer'" value="deliverer">Deliverer</option>
+      <option [selected]="this.user.role === 'user'" value="user">User</option>
+    </select>
+    <button type="submit" class="btn btn-success marginLeft functionButton mb-2">Update</button>
+  </form>
+  </div>
+  <div class="col-sm-3 d-inline-block"></div>
+</div>
