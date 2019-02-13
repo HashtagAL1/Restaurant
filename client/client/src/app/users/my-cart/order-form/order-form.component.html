@@ -1,0 +1,24 @@
+<form [formGroup]="this.orderForm">
+  <div class="d-inline-block text-center col-sm-3 float-left">
+    <label class="generalText" for="customerName">Name:</label>
+    <input type="text" class="form-control" formControlName="customerName" id="customerName" placeholder="Your name"/>
+  </div>
+  <div class="d-inline-block col-sm-3 text-center float-left">
+    <label class="generalText" for="pickup">Pick up:</label>
+    <select class="form-control" formControlName="pickup" id="pickup">
+      <option>Location</option>
+      <option>Location</option>
+      <option>Location</option>
+      <option>Location</option>
+      <option>Location</option>
+    </select>
+  </div>
+  <div class="d-inline-block col-sm-3 text-center float-left">
+    <label for="customerAddress" class="generalText">Address</label>
+    <textarea id="customerAddress" class="form-control" [formControlName]="customerAddress" placeholder="Your address"></textarea>
+  </div>
+  <div class="d-inline-block col-sm-3 text-center mt-4">
+    <button class="btn btn-success functionButton">Take my order</button>
+  </div>
+</form>
+

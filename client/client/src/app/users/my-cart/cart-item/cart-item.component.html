@@ -15,7 +15,7 @@
   </div>
   <div class="col-sm-2 d-inline-block">
     <h4 class="text-center">Subtotal:</h4>
-    <div class="text-center font-weight-bold" [textContent]="this.item.subtotal.toFixed(2)"></div>
+    <div class="text-center font-weight-bold" [textContent]="this.item.subtotal.toFixed(2) + '$'"></div>
   </div>
   <div class="col-sm-2 d-inline-block">
     <button (click)="this.removeItem()" type="button" class="btn btn-danger">Remove</button>
