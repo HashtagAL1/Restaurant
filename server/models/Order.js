@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const orderSchema = new mongoose.Schema({
     cart: [mongoose.SchemaTypes.Object],
     totalPrice: {type: Number, required: true},
-    date: {type: mongoose.SchemaTypes.Date},
+    date: {type: String, required: true},
     location: {type: String, default: ''},
     username: {type: String, required: true},
     address: {type: String, default: ''},

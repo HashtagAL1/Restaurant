@@ -11,6 +11,7 @@ export class CartItemComponent implements OnInit {
   @Input() item: any;
   @Input() totalPrice: any;
   @Input() refresh: boolean;
+  @Input() details: boolean;
   @Output() totalPriceChange = new EventEmitter();
   @Output() refreshEvent = new EventEmitter();
 

@@ -8,6 +8,7 @@ import {AuthorizationService} from "./services/authorization.service";
 import {UsersModule} from "./users/users.module";
 import {NotifierModule} from "angular-notifier";
 import {MealsModule} from "./meals/meals.module";
+import {OrdersModule} from "./orders/orders.module";
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {MealsModule} from "./meals/meals.module";
     SharedModule,
     UsersModule,
     MealsModule,
+    OrdersModule,
     NotifierModule.withConfig({
       position: {
         horizontal: {

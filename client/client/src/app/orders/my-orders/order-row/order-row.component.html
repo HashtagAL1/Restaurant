@@ -1,0 +1,9 @@
+<div class="customRow">
+  <div class="col-sm-3 d-inline-block">{{this.order.customerName}}</div>
+  <div class="col-sm-3 d-inline-block">{{this.order.date}}</div>
+  <div class="col-sm-3 d-inline-block">{{this.order.totalPrice}}$</div>
+  <div class="col-sm-3 d-inline-block">
+    <a routerLink="/orderDetails/{{this.order._id}}"><button type="button" class="btn btn-success functionButton mb-2">Details</button></a>
+  </div>
+</div>
+

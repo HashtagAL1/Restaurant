@@ -56,9 +56,9 @@ router.get('/status/:status', (req, res) => {
         });
 });
 
-router.get('/myOrders/:userId', (req, res) => {
-    const userId = req.params.userId;
-    Order.find({customerID: userId})
+router.get('/myOrders/:username', (req, res) => {
+    const username = req.params.username;
+    Order.find({username: username})
         .then((orders) => {
             return res.status(200).json({
                 success: true,
@@ -70,6 +70,24 @@ router.get('/myOrders/:userId', (req, res) => {
             return res.status(200).json({
                 success: false,
                 message: 'Invalid data'
+            });
+        });
+});
+
+router.get('/orderDetails/:orderId', (req, res) => {
+    const orderId = req.params.orderId;
+    Order.findOne({_id: orderId})
+        .then((order) => {
+            if (order === null) {
+                return res.status(200).json({
+                    success: false,
+                    message: 'Invalid data'
+                });
+            }
+            return res.status(200).json({
+                success: true,
+                message: 'Order fetched',
+                order: order
             });
         });
 });

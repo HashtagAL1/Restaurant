@@ -6,10 +6,9 @@
   <div *ngIf="!this.cartService.isEmpty()" class="marginTop">
     <ul>
       <li *ngFor="let item of this.cart" class="cartItem">
-        <app-cart-item [refresh]="this.refresh" (refreshEvent)="this.ngOnInit()" (totalPriceChange)="this.totalPrice = $event" [totalPrice]="this.totalPrice" [item]="item"></app-cart-item>
+        <app-cart-item [details]="false" [refresh]="this.refresh" (refreshEvent)="this.ngOnInit()" (totalPriceChange)="this.totalPrice = $event" [totalPrice]="this.totalPrice" [item]="item"></app-cart-item>
       </li>
     </ul>
-
     <div class="col-sm-12">
       <div class="d-inline-block col-sm-3 float-left ml-4" id="totalPriceInfo">
         Total Price: {{this.totalPrice}}$
@@ -18,7 +17,5 @@
         <app-order-form [cart]="this.cart" [totalPrice]="this.totalPrice"></app-order-form>
       </div>
     </div>
-
   </div>
-
 </div>

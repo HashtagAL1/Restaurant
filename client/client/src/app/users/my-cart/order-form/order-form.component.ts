@@ -5,6 +5,7 @@ import {AuthorizationService} from "../../../services/authorization.service";
 import {NotifierService} from "angular-notifier";
 import {Router} from "@angular/router";
 import {CartService} from "../../../services/cart.service";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-order-form',
@@ -25,7 +26,8 @@ export class OrderFormComponent implements OnInit {
               public auth: AuthorizationService,
               public notifier: NotifierService,
               public router: Router,
-              public cartService: CartService) { }
+              public cartService: CartService,
+              public datePipe: DatePipe) { }
 
   ngOnInit() {
   }
@@ -39,11 +41,12 @@ export class OrderFormComponent implements OnInit {
   }
 
   takeOrder() {
+    let date = this.datePipe.transform(new Date(), 'dd-MM-yyyy');
     let order = {
       customerName: this.orderForm.get('customerName').value,
       location: this.orderForm.get('pickup').value,
       address: this.orderForm.get('customerAddress').value,
-      date: new Date(),
+      date: date,
       cart: this.cart,
       totalPrice: this.totalPrice,
       username: this.auth.getUsername()

@@ -1,0 +1,19 @@
+<div class="bodyStyle">
+  <h1 class="text-center">Order Details</h1>
+  <div class="marginTop col-sm-12 ml-5">
+    <h4 class="font-weight-bold">Info:</h4>
+    <div class="d-inline-block col-sm-2 generalText">Name: {{this.order.customerName}}</div>
+    <div class="d-inline-block col-sm-4 generalText">Pickup/Delivery: {{this.getReceiveType()}}</div>
+    <div class="d-inline-block col-sm-3 generalText">Date: {{this.order.date}}</div>
+    <div class="d-inline-block col-sm-3 generalText">Status: <span [className]="this.getStatusBackground()">{{this.order.status}}</span></div>
+  </div>
+  <div class="marginTop ml-5">
+    <h4 class="font-weight-bold">Cart:</h4>
+    <ul>
+      <li *ngFor="let item of this.order.cart" class="cartItem">
+        <app-cart-item [details]="true" [refresh]="false" [totalPrice]="this.order.cart.totalPrice" [item]="item"></app-cart-item>
+      </li>
+    </ul>
+  </div>
+  <h3 class="text-lg-left ml-5">Total price: {{this.order.totalPrice}}$</h3>
+</div>

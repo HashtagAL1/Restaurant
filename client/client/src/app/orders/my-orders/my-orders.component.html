@@ -1,0 +1,17 @@
+<div class="bodyStyle">
+  <h1 class="text-center">My Orders</h1>
+  <div *ngIf="this.isEmpty" class="text-center font-weight-bold anouncement">
+    Currently, you have 0 orders.
+  </div>
+  <div *ngIf="!this.isEmpty" class="col-sm-12 marginTop text-center bg-yellowCustom">
+    <div class="heading col-sm-3 d-inline-block">Name</div>
+    <div class="heading col-sm-3 d-inline-block">Date</div>
+    <div class="heading col-sm-3 d-inline-block">Price</div>
+    <div class="heading col-sm-3 d-inline-block">Actions</div>
+  </div>
+  <div *ngFor="let order of this.orders | paginate: { itemsPerPage: 10, currentPage: p }" class="col-sm-12 text-center font-weight-bold">
+    <app-order-row [order]="order"></app-order-row>
+  </div>
+  <div *ngIf="this.orders.length <= 10" class="text-center font-weight-bold">Here's only one page</div>
+  <pagination-controls *ngIf="this.orders.length > 10" class="paginationCustom" (pageChange)="p = $event"></pagination-controls>
+</div>

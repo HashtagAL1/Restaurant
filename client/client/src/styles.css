@@ -22,9 +22,19 @@ app-root {
   margin-left: 15%;
 }
 
-.userRow {
+.customRow {
   border: 1px solid white;
   border-radius: 15px;
+}
+
+.status {
+  border-radius: 15px;
+  font-size: medium;
+  padding: 10px;
+}
+
+.bg-greenCustom {
+  background-color: #0bff01;
 }
 
 

@@ -9,7 +9,7 @@
   <div class="col-sm-3 d-inline-block">
     <h4 class="text-center">Quantity:</h4>
     <div class="text-center">
-      <input (change)="this.updateQty($event.target.value)" type="number" min="1"
+      <input [disabled]="this.details" (change)="this.updateQty($event.target.value)" type="number" min="1"
              class="form-control d-inline-block" id="qtyInput" [value]="this.item.qty"/>
     </div>
   </div>
@@ -17,7 +17,7 @@
     <h4 class="text-center">Subtotal:</h4>
     <div class="text-center font-weight-bold" [textContent]="this.item.subtotal.toFixed(2) + '$'"></div>
   </div>
-  <div class="col-sm-2 d-inline-block">
+  <div *ngIf="!this.details" class="col-sm-2 d-inline-block">
     <button (click)="this.removeItem()" type="button" class="btn btn-danger">Remove</button>
   </div>
 </div>

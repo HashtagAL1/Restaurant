@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule} from "@angular/common/http";
@@ -22,8 +22,8 @@ import {OrderService} from "../services/order.service";
     RouterModule,
     NgxPaginationModule
   ],
-  exports: [RegisterComponent, LoginComponent],
+  exports: [RegisterComponent, LoginComponent, CartItemComponent],
   declarations: [RegisterComponent, LoginComponent, AllUsersComponent, MyCartComponent, CartItemComponent, UserRowComponent, OrderFormComponent],
-  providers: [UserService, OrderService]
+  providers: [UserService, OrderService, DatePipe]
 })
 export class UsersModule { }
