@@ -12,6 +12,7 @@ import { CartItemComponent } from './my-cart/cart-item/cart-item.component';
 import { UserRowComponent } from './all-users/user-row/user-row.component';
 import {NgxPaginationModule} from "ngx-pagination";
 import { OrderFormComponent } from './my-cart/order-form/order-form.component';
+import {OrderService} from "../services/order.service";
 
 @NgModule({
   imports: [
@@ -23,6 +24,6 @@ import { OrderFormComponent } from './my-cart/order-form/order-form.component';
   ],
   exports: [RegisterComponent, LoginComponent],
   declarations: [RegisterComponent, LoginComponent, AllUsersComponent, MyCartComponent, CartItemComponent, UserRowComponent, OrderFormComponent],
-  providers: [UserService]
+  providers: [UserService, OrderService]
 })
 export class UsersModule { }

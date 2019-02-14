@@ -71,4 +71,8 @@ export class CartService {
     const temp = this.initializeCart();
     return temp.length === 0;
   }
+
+  clear() {
+    localStorage.setItem('cart', '[]');
+  }
 }
