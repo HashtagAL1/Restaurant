@@ -23,10 +23,6 @@ export class AuthorizationService {
     return this.getDecodedToken()['username'];
   }
 
-  getUserId(): string {
-    return this.getDecodedToken()['userId'];
-  }
-
   isAdmin(): boolean {
     return this.isLoggedIn() && this.getDecodedToken().role === 'admin';
   }

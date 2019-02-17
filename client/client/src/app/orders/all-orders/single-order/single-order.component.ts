@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {OrderService} from "../../../services/order.service";
 import {NotifierService} from "angular-notifier";
+import {AuthorizationService} from "../../../services/authorization.service";
 
 @Component({
   selector: 'app-single-order',
@@ -12,7 +13,8 @@ export class SingleOrderComponent implements OnInit {
   @Input() order: any;
 
   constructor(public orderService: OrderService,
-              public notifier: NotifierService) { }
+              public notifier: NotifierService,
+              public auth: AuthorizationService) { }
 
   ngOnInit() {
   }
@@ -26,14 +28,13 @@ export class SingleOrderComponent implements OnInit {
   }
 
   displayTakeButton() {
-    if (this.order.location !== 'delivery' || this.order.status !== 'In Progress') {
-        return false;
-    }
-    return true;
+    return this.order.status === 'In Progress' && this.auth.isDeliverer();
   }
 
   displayDeliverButton() {
-    return this.order.status === 'Taken';
+    return this.order.status === 'Taken' &&
+      this.auth.isDeliverer() &&
+      this.order.deliverer === this.auth.getUsername();
   }
 
   takeOrder() {

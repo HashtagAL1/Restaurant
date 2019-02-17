@@ -17,7 +17,6 @@ export class UserService {
   }
 
   updateUser(userId: string, role: string): Observable<any> {
-    console.log({role});
     const payload = JSON.stringify({role});
     console.log(payload);
     return this.http.post(`http://localhost:3333/users/update/${userId}`, payload, {headers:this.auth.createHeaders()});
