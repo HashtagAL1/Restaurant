@@ -1,0 +1,14 @@
+<div class="bodyStyle">
+  <h1 class="text-center">All Orders</h1>
+  <div class="bg-yellowCustom col-sm-12">
+    <div class="heading text-center d-inline-block col-sm-3">Name</div>
+    <div class="heading text-center d-inline-block col-sm-2">Date</div>
+    <div class="heading text-center d-inline-block col-sm-2">Type</div>
+    <div class="heading text-center d-inline-block col-sm-2">Price</div>
+    <div class="heading text-center d-inline-block col-sm-3">Actions</div>
+  </div>
+  <div *ngFor="let order of this.orders" class="col-sm-12">
+    <app-single-order [order]="order"></app-single-order>
+  </div>
+
+</div>

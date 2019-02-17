@@ -37,12 +37,8 @@ export class OrderDetailsComponent implements OnInit {
     return `Pickup from ${this.order.location}`;
   }
 
-  getStatusBackground() {
-    switch (this.order.status) {
-      case 'In Progress': return 'bg-primary status';
-      case 'On the way': return 'bg-yellowCusstom status';
-      case 'Delivered': return 'bg-greenCustom status';
-    }
+  isOrderDelivered() {
+    return this.order.status === 'Delivered';
   }
 
 }

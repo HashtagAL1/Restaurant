@@ -12,6 +12,7 @@ import {MealDetailsComponent} from "../meals/meal-details/meal-details.component
 import {MyCartComponent} from "../users/my-cart/my-cart.component";
 import {MyOrdersComponent} from "../orders/my-orders/my-orders.component";
 import {OrderDetailsComponent} from "../orders/order-details/order-details.component";
+import {AllOrdersComponent} from "../orders/all-orders/all-orders.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'mealDetails/:mealId', component: MealDetailsComponent},
   {path: 'myCart', component: MyCartComponent},
   {path: 'myOrders', component: MyOrdersComponent},
-  {path: 'orderDetails/:orderId', component: OrderDetailsComponent}
+  {path: 'orderDetails/:orderId', component: OrderDetailsComponent},
+  {path: 'allOrders', component: AllOrdersComponent}
 ];
 
 @NgModule({

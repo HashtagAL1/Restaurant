@@ -5,8 +5,9 @@
   </div>
   <div *ngIf="!this.isEmpty" class="col-sm-12 marginTop text-center bg-yellowCustom">
     <div class="heading col-sm-3 d-inline-block">Name</div>
-    <div class="heading col-sm-3 d-inline-block">Date</div>
-    <div class="heading col-sm-3 d-inline-block">Price</div>
+    <div class="heading col-sm-2 d-inline-block">Date</div>
+    <div class="heading col-sm-2 d-inline-block">Price</div>
+    <div class="heading col-sm-2 d-inline-block">Status</div>
     <div class="heading col-sm-3 d-inline-block">Actions</div>
   </div>
   <div *ngFor="let order of this.orders | paginate: { itemsPerPage: 10, currentPage: p }" class="col-sm-12 text-center font-weight-bold">

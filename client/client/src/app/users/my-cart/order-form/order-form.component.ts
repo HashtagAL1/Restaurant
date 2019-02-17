@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, OnDestroy} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {OrderService} from "../../../services/order.service";
 import {AuthorizationService} from "../../../services/authorization.service";
@@ -30,6 +30,10 @@ export class OrderFormComponent implements OnInit {
               public datePipe: DatePipe) { }
 
   ngOnInit() {
+
+  }
+
+  ngOnDestroy() {
   }
 
   checkAddress(value: string) {

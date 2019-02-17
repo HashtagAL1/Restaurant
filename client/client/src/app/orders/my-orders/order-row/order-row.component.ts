@@ -17,4 +17,12 @@ export class OrderRowComponent implements OnInit {
   ngOnInit() {
   }
 
+  getRowClass() {
+    switch (this.order.status) {
+      case 'In Progress': return 'bg-yellowCustom customRow text-center font-weight-bold';
+      case 'Taken': return 'bg-danger customRow text-center font-weight-bold';
+      case 'Delivered': return 'bg-primary customRow text-center font-weight-bold';
+    }
+  }
+
 }

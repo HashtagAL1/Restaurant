@@ -10,15 +10,16 @@ router.post('/add', (req, res) => {
         .then((no) => {
             return res.status(200).json({
                 success: true,
-                message: 'Order taken'
+                message: 'Order taken',
+                order: no
             });
         });
 });
 
 router.post('/update/:orderId', (req, res) => {
     const orderId = req.params.orderId;
-    const {status} = req.body;
-    Order.update({_id: orderId}, { $set: {status: status}})
+    const {status, deliverer} = req.body;
+    Order.updateOne({_id: orderId}, { $set: {status: status, deliverer: deliverer}})
         .then((updatedOrder) => {
             return res.status(200).json({
                 success: true,
@@ -34,6 +35,7 @@ router.post('/update/:orderId', (req, res) => {
 });
 
 router.get('/allOrders', (req, res) => {
+
     Order.find({})
         .then((orders) => {
             return res.status(200).json({
