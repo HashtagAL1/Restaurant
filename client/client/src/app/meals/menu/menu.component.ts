@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {AuthorizationService} from "../../services/authorization.service";
 import {Router} from "@angular/router";
 import {MealService} from "../../services/meal.service";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {CartService} from "../../services/cart.service";
 
 @Component({
   selector: 'app-menu',

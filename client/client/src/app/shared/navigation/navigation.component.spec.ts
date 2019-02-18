@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavigationComponent } from './navigation.component';
+import {UsersModule} from "../../users/users.module";
+import {RouterTestingModule} from "@angular/router/testing";
+import {CommonModule} from "@angular/common";
+import {AuthorizationService} from "../../services/authorization.service";
+import {OrderService} from "../../services/order.service";
+import {NotifierModule} from "angular-notifier";
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -8,7 +14,14 @@ describe('NavigationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NavigationComponent ]
+      imports: [
+        CommonModule,
+        RouterTestingModule,
+        UsersModule,
+        NotifierModule
+      ],
+      declarations: [ NavigationComponent ],
+      providers: [AuthorizationService, OrderService]
     })
     .compileComponents();
   }));

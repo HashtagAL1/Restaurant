@@ -10,7 +10,7 @@ import {UsersModule} from "../users/users.module";
   imports: [
     CommonModule,
     AppRoutingModule,
-    UsersModule,
+    UsersModule
   ],
   exports: [HomeComponent, NavigationComponent],
   providers: [AuthorizationService],

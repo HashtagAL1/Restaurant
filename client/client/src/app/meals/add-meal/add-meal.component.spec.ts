@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddMealComponent } from './add-meal.component';
+import {NgxPaginationModule} from "ngx-pagination";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RouterTestingModule} from "@angular/router/testing";
+import {HttpClientModule} from "@angular/common/http";
+import {CommonModule} from "@angular/common";
+import {NotifierModule} from "angular-notifier";
 
 describe('AddMealComponent', () => {
   let component: AddMealComponent;
@@ -8,7 +14,16 @@ describe('AddMealComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddMealComponent ]
+      declarations: [ AddMealComponent ],
+      imports: [
+        CommonModule,
+        HttpClientModule,
+        RouterTestingModule,
+        ReactiveFormsModule,
+        NgxPaginationModule,
+        NotifierModule,
+        FormsModule
+      ]
     })
     .compileComponents();
   }));

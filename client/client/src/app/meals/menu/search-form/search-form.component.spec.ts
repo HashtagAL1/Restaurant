@@ -1,6 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchFormComponent } from './search-form.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {NgxPaginationModule} from "ngx-pagination";
+import {HttpClientModule} from "@angular/common/http";
+import {CommonModule} from "@angular/common";
+import {RouterTestingModule} from "@angular/router/testing";
+import {NotifierModule} from "angular-notifier";
+import {
+  NgxNavigationWithDataComponent, NgxNavigationWithDataModule,
+  NgxNavigationWithDataService
+} from "ngx-navigation-with-data";
 
 describe('SearchFormComponent', () => {
   let component: SearchFormComponent;
@@ -8,7 +18,17 @@ describe('SearchFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SearchFormComponent ]
+      declarations: [ SearchFormComponent ],
+      imports: [
+        CommonModule,
+        HttpClientModule,
+        RouterTestingModule,
+        NotifierModule,
+        ReactiveFormsModule,
+        FormsModule,
+        NgxPaginationModule,
+        NgxNavigationWithDataModule
+      ]
     })
     .compileComponents();
   }));

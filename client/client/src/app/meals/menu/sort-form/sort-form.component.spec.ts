@@ -1,6 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SortFormComponent } from './sort-form.component';
+import {NgxNavigationWithDataModule} from "ngx-navigation-with-data";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {NotifierModule} from "angular-notifier";
+import {NgxPaginationModule} from "ngx-pagination";
+import {RouterTestingModule} from "@angular/router/testing";
+import {HttpClientModule} from "@angular/common/http";
+import {CommonModule} from "@angular/common";
 
 describe('SortFormComponent', () => {
   let component: SortFormComponent;
@@ -8,7 +15,17 @@ describe('SortFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SortFormComponent ]
+      declarations: [ SortFormComponent ],
+      imports: [
+        CommonModule,
+        HttpClientModule,
+        RouterTestingModule,
+        ReactiveFormsModule,
+        NgxPaginationModule,
+        NotifierModule,
+        ReactiveFormsModule,
+        FormsModule
+      ]
     })
     .compileComponents();
   }));
