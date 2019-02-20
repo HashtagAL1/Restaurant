@@ -35,6 +35,10 @@ export class AuthorizationService {
     return this.isLoggedIn() && this.getDecodedToken().role === 'deliverer';
   }
 
+  isStaff(): boolean {
+    return this.isLoggedIn() && this.getDecodedToken().role === 'staff';
+  }
+
   isLoggedIn() {
     const access_token = localStorage.getItem('access_token');
     if (access_token) {

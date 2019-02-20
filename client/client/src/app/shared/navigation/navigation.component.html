@@ -18,7 +18,7 @@
       <li *ngIf="this.auth.isLoggedIn()" class="nav-item">
         <a class="nav-link linkColor" routerLink="/myOrders">My Orders</a>
       </li>
-      <li *ngIf="this.auth.isAdmin() || this.auth.isDeliverer()" class="nav-item">
+      <li *ngIf="this.auth.isAdmin() || this.auth.isDeliverer() || this.auth.isStaff()" class="nav-item">
         <a class="nav-link linkColor" routerLink="/allOrders">All Orders</a>
       </li>
       <li *ngIf="this.auth.isModerator()" class="nav-item">

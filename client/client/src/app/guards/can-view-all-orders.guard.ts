@@ -16,7 +16,7 @@ export class CanViewAllOrdersGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (!this.auth.isAdmin() && !this.auth.isDeliverer()) {
+    if (!this.auth.isAdmin() && !this.auth.isDeliverer() && !this.auth.isStaff()) {
         this.notifier.notify('warning', 'You don\'t have the permissions to access this page');
         this.router.navigate(['/']);
         return false;

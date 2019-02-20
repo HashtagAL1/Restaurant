@@ -24,6 +24,7 @@ export class SingleOrderComponent implements OnInit {
       case 'In Progress': return 'bg-yellowCustom customRow text-center font-weight-bold';
       case 'Taken': return 'bg-danger customRow text-center font-weight-bold';
       case 'Delivered': return 'bg-primary customRow text-center font-weight-bold';
+      default: return 'bg-secondary customRow text-center font-weight-bold';
     }
   }
 
@@ -35,6 +36,23 @@ export class SingleOrderComponent implements OnInit {
     return this.order.status === 'Taken' &&
       this.auth.isDeliverer() &&
       this.order.deliverer === this.auth.getUsername();
+  }
+
+  displayPickUpButton() {
+    return this.order.status === 'In Progress' &&
+      this.auth.isStaff() &&
+      this.order.location !== 'delivery';
+  }
+
+  pickUp() {
+    this.orderService.updateOrderStatus(this.order._id, 'Picked Up').subscribe((res) => {
+      if (!res.success) {
+        this.notifier.notify('warning', res.message);
+        return;
+      }
+      this.notifier.notify('success', 'Order Picked Up!');
+      this.ngOnInit();
+    })
   }
 
   takeOrder() {

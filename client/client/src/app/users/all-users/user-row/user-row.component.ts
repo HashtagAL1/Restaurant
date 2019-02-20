@@ -44,10 +44,11 @@ export class UserRowComponent implements OnInit {
   }
   setRowClass(): string {
     switch (this.user.role) {
-      case 'user': return 'bg-primary customRow';
+      case 'staff': return 'bg-primary customRow';
       case 'admin': return 'bg-success customRow';
       case 'deliverer': return 'bg-warning customRow';
       case 'moderator': return 'bg-danger customRow';
+      default: return 'bg-secondary customRow'
     }
   }
 

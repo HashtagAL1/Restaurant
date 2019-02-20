@@ -7,6 +7,7 @@
     <a routerLink="/orderDetails/{{this.order._id}}"><button type="button" class="btn btn-success functionButton mb-2">Details</button></a>
     <button *ngIf="this.displayTakeButton()" (click)="this.takeOrder()" class="btn btn-success functionButton mb-2">Take</button>
     <button *ngIf="this.displayDeliverButton()" (click)="this.deliverOrder()" class="btn btn-success functionButton mb-2">Deliver</button>
+    <button *ngIf="this.displayPickUpButton()" (click)="this.pickUp()" class="btn btn-success functionButton mb-2">Pick Up</button>
   </div>
 </div>
 

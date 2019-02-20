@@ -34,7 +34,11 @@ export class OrderService {
   }
 
   updateOrderStatus(orderId: string, status: string): Observable<any> {
-    const payload = JSON.stringify({status: status, deliverer: this.auth.getUsername()});
+    let deliverer = this.auth.getUsername();
+    if (this.auth.isStaff()) {
+        deliverer = '';
+    }
+    const payload = JSON.stringify({status: status, deliverer: deliverer});
     return this.http.post(`http://localhost:3333/orders/update/${orderId}`, payload, {headers: this.auth.createHeaders()});
   }
 }
