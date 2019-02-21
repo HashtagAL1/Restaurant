@@ -20,6 +20,11 @@ export class MealService {
     return this.http.post('http://localhost:3333/meals/add', payload, {headers: this.auth.createHeaders()});
   }
 
+  editMeal(data): Observable<any> {
+    const payload = JSON.stringify(data);
+    return this.http.post(`http://localhost:3333/meals/edit/${data._id}`, payload, {headers: this.auth.createHeaders()});
+  }
+
   searchByName(data): Observable<any> {
     const payload = JSON.stringify({data});
     return this.http.post('http://localhost:3333/meals/search', payload, {headers: this.auth.createHeaders()});

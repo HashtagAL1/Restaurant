@@ -20,7 +20,7 @@ export class AddMealComponent implements OnInit {
     ingredients: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required])
   });
-  categories = ['Main', 'Salad', 'Desert', 'Appetizer', 'Vegetarian', 'Soup', 'Pizza', 'Sandwich', 'Seafood', 'Other'];
+  //categories = ['Main', 'Salad', 'Desert', 'Appetizer', 'Vegetarian', 'Soup', 'Pizza', 'Sandwich', 'Seafood', 'Other'];
 
   constructor(public notifier: NotifierService,
               public mealService: MealService,

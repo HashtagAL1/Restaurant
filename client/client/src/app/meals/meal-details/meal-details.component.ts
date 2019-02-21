@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {MealService} from "../../services/meal.service";
 import {NotifierService} from "angular-notifier";
@@ -13,6 +13,7 @@ import {AuthorizationService} from "../../services/authorization.service";
 export class MealDetailsComponent implements OnInit {
 
   meal: any;
+  showEdit = false;
 
   constructor(public activatedRoute: ActivatedRoute,
               public router: Router,
@@ -47,6 +48,10 @@ export class MealDetailsComponent implements OnInit {
       this.notifier.notify('success', res.message);
       this.router.navigate(['/menu']);
     })
+  }
+
+  showHideEditForm() {
+    this.showEdit = !this.showEdit;
   }
 
 }

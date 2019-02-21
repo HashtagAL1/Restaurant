@@ -1,0 +1,37 @@
+<div class="marginTop ml-4 mr-4">
+  <form [formGroup]="this.form" (ngSubmit)="this.submitForm()">
+    <div class="col-sm-12">
+      <div class="form-group text-center col-sm-3 d-inline-block">
+        <label class="generalText" for="mealName">Meal Name</label>
+        <input formControlName="name" type="text" class="form-control" id="mealName" placeholder="Enter meal name"/>
+      </div>
+      <div class="form-group text-center col-sm-3 d-inline-block">
+        <label class="generalText" for="category">Category</label>
+        <select class="form-control" id="category" formControlName="category">
+          <option *ngFor="let c of this.categories" value="{{c.toLowerCase()}}">{{c}}</option>
+        </select>
+      </div>
+      <div class="form-group text-center col-sm-2 d-inline-block">
+        <label class="generalText" for="price">Meal Price ($)</label>
+        <input type="text" class="form-control" id="price" formControlName="price" placeholder="Enter meal price"/>
+      </div>
+      <div class="form-group text-center col-sm-4 d-inline-block">
+        <label class="generalText" for="imageUrl">Image URL</label>
+        <input type="text" class="form-control" formControlName="imageUrl" id="imageUrl" placeholder="Enter image URL">
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group text-center col-sm-5 d-inline-block">
+        <label class="generalText" for="ingredients">Ingredients</label>
+        <textarea class="form-control" id="ingredients" formControlName="ingredients" placeholder="Ingredient 1,Ingredient 2.."></textarea>
+      </div>
+      <div class="col-sm-2 d-inline-block text-center">
+        <button [disabled]="this.form.invalid" type="submit" class="btn btn-success functionButton">Submit</button>
+      </div>
+      <div class="form-group col-sm-5 text-center d-inline-block">
+        <label class="generalText" for="description">Description</label>
+        <textarea class="form-control" id="description" formControlName="description" placeholder="Enter description"></textarea>
+      </div>
+    </div>
+  </form>
+</div>

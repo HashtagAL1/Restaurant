@@ -27,7 +27,7 @@ router.post('/add', (req, res) => {
 router.post('/edit/:mealId', (req, res) => {
     const mealId = req.params.mealId;
     const editedMeal = req.body;
-    Meal.update({_id: mealId}, editedMeal)
+    Meal.updateOne({_id: mealId}, editedMeal)
         .then((em) => {
             return res.status(200).json({
                 success: true,
