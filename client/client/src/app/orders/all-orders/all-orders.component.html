@@ -7,8 +7,10 @@
     <div class="heading text-center d-inline-block col-sm-2">Price</div>
     <div class="heading text-center d-inline-block col-sm-3">Actions</div>
   </div>
-  <div *ngFor="let order of this.orders" class="col-sm-12">
+  <div *ngFor="let order of this.orders | paginate: { itemsPerPage: 10, currentPage: p }" class="col-sm-12">
     <app-single-order [order]="order"></app-single-order>
   </div>
+  <div *ngIf="this.orders.length <= 10" class="text-center font-weight-bold">Here's only one page</div>
+  <pagination-controls *ngIf="this.orders.length > 10" class="paginationCustom" (pageChange)="p = $event"></pagination-controls>
 
 </div>

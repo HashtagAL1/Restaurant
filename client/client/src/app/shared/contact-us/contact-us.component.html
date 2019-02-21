@@ -1,0 +1,23 @@
+<div class="bodyStyle">
+  <h1 class="text-center">Contact Us</h1>
+  <div class="col-sm-12 marginTop">
+    <div class="col-sm-5 d-inline-block float-left">
+      <iframe class="map" [src]="this.getMapUrl()"></iframe>
+      <select (change)="this.onChange($event)" class="form-control">
+        <option *ngFor="let l of this.locations" value="{{l.name}}">{{l.name}}</option>
+      </select>
+    </div>
+    <div class="col-sm-2 d-inline-block"></div>
+    <div class="col-sm-5 d-inline-block font-weight-bold">
+      We have currently 3 offices in Sofia, where you can get in touch with us.
+      There is a map on the left hand side of the screen, which shows where each office is,
+      and its email and phone number at the bottom.
+      We value your opinion very highly, so don't hesitate to contact us at any time.
+      <div class="mt-4">
+        <h5>{{this.selected.name}} Contacts:</h5>
+        <div>Phone: {{this.selected.phone}}</div>
+        <div>Email: {{this.selected.email}}</div>
+      </div>
+    </div>
+  </div>
+</div>

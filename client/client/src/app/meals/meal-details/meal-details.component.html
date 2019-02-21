@@ -18,9 +18,10 @@
           <strong>You need to <a routerLink="/">login</a>, in order to be able to add this meal to your cart.</strong>
         </div>
         <a *ngIf="this.auth.isLoggedIn()"><button class="btn btn-success functionButton" id="addButton" (click)="this.addToCart()">Add to cart</button></a>
-        <button *ngIf="this.auth.isModerator()" (click)="this.showHideEditForm($event)" class="btn btn-info functionButton" id="editButton">{{this.showEdit ? 'Hide form' : 'Edit'}}</button>
+        <button *ngIf="this.auth.isModerator()" (click)="this.showHideEditForm()" class="btn btn-info functionButton" id="editButton">{{this.showEdit ? 'Hide form' : 'Edit'}}</button>
         <a *ngIf="this.auth.isModerator()" (click)="this.delete()"><button class="btn btn-danger functionButton" id="deleteButton">Delete</button></a>
       </div>
+      <div *ngIf="this.showEdit" class="text-center font-weight-bold mt-3">Form is at the bottom</div>
     </div>
   </div>
   <app-add-edit-form *ngIf="this.showEdit" [meal]="this.meal"></app-add-edit-form>

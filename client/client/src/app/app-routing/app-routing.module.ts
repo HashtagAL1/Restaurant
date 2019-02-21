@@ -16,6 +16,8 @@ import {ModeratorGuard} from "../guards/moderator.guard";
 import {LoggedGuard} from "../guards/logged.guard";
 import {CanViewAllOrdersGuard} from "../guards/can-view-all-orders.guard";
 import {CanViewOrderDetailsGuard} from "../guards/can-view-order-details.guard";
+import {PageNotFoundComponent} from "../shared/page-not-found/page-not-found.component";
+import {ContactUsComponent} from "../shared/contact-us/contact-us.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -27,7 +29,9 @@ const routes: Routes = [
   {path: 'myCart', component: MyCartComponent, canActivate: [LoggedGuard]},
   {path: 'myOrders', component: MyOrdersComponent, canActivate: [LoggedGuard]},
   {path: 'orderDetails/:orderId', component: OrderDetailsComponent, canActivate: [CanViewOrderDetailsGuard]},
-  {path: 'allOrders', component: AllOrdersComponent, canActivate: [CanViewAllOrdersGuard]}
+  {path: 'allOrders', component: AllOrdersComponent, canActivate: [CanViewAllOrdersGuard]},
+  {path: 'contactUs', component: ContactUsComponent},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

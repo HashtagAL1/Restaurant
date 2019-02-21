@@ -25,7 +25,7 @@ import {OrdersModule} from "./orders/orders.module";
     NotifierModule.withConfig({
       position: {
         horizontal: {
-          position: 'left'
+          position: 'right'
         },
         vertical: {
           position: 'top'
