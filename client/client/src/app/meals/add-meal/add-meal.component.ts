@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthorizationService} from "../../services/authorization.service";
 import {NotifierService} from "angular-notifier";
 import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MealService} from "../../services/meal.service";
+import {Subscription} from "rxjs/Rx";
 
 @Component({
   selector: 'app-add-meal',
   templateUrl: './add-meal.component.html',
   styleUrls: ['./add-meal.component.css']
 })
-export class AddMealComponent implements OnInit {
+export class AddMealComponent implements OnInit, OnDestroy {
 
   addForm = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -20,6 +21,7 @@ export class AddMealComponent implements OnInit {
     ingredients: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required])
   });
+  sub: Subscription;
   //categories = ['Main', 'Salad', 'Desert', 'Appetizer', 'Vegetarian', 'Soup', 'Pizza', 'Sandwich', 'Seafood', 'Other'];
 
   constructor(public notifier: NotifierService,
@@ -38,7 +40,7 @@ export class AddMealComponent implements OnInit {
       .split(',').filter(ing => ing !== '').map(ing => ing.trim());
     const description = this.addForm.get('description').value;
     const meal = { name, price, imageUrl, category, ingredients, description};
-    this.mealService.addMeal(meal).subscribe((res) => {
+    this.sub = this.mealService.addMeal(meal).subscribe((res) => {
       if (!res.success) {
           this.notifier.notify('warning', res.message);
           return;
@@ -48,4 +50,9 @@ export class AddMealComponent implements OnInit {
     })
   }
 
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
 }

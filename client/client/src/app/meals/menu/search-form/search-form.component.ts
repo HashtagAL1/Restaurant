@@ -4,6 +4,7 @@ import {MealService} from "../../../services/meal.service";
 import {NotifierService} from "angular-notifier";
 import {Router} from "@angular/router";
 import {NgxNavigationWithDataComponent} from "ngx-navigation-with-data";
+import {Subscription} from "rxjs/Rx";
 
 @Component({
   selector: 'app-search-form',
@@ -15,6 +16,7 @@ export class SearchFormComponent implements OnInit {
   searchForm = new FormGroup({
     query: new FormControl('', [Validators.required])
   });
+  sub: Subscription;
 
   constructor(public mealService: MealService,
               public notifier: NotifierService,
@@ -26,7 +28,7 @@ export class SearchFormComponent implements OnInit {
 
   search() {
     const query = this.searchForm.get('query').value;
-    this.mealService.searchByName(query).subscribe((res) => {
+    this.sub = this.mealService.searchByName(query).subscribe((res) => {
       if (!res.success) {
           this.notifier.notify('warning', res.message);
           return;
@@ -35,4 +37,9 @@ export class SearchFormComponent implements OnInit {
     })
   }
 
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
 }

@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MealService} from "../../../services/meal.service";
 import {NgxNavigationWithDataComponent} from "ngx-navigation-with-data";
 import {NotifierService} from "angular-notifier";
+import {Subscription} from "rxjs/Rx";
 
 @Component({
   selector: 'app-filter-form',
@@ -15,6 +16,7 @@ export class FilterFormComponent implements OnInit {
   filterForm = new FormGroup({
     category: new FormControl('main', [Validators.required])
   });
+  sub: Subscription;
 
   constructor(public mealService: MealService,
               public navCtrl: NgxNavigationWithDataComponent,
@@ -25,7 +27,7 @@ export class FilterFormComponent implements OnInit {
 
   filter() {
     let category = this.filterForm.get('category').value;
-    this.mealService.getAllMealsCategory(category).subscribe((res) => {
+    this.sub = this.mealService.getAllMealsCategory(category).subscribe((res) => {
       if (!res.success) {
         this.notifier.notify('info', res.message);
         return;
@@ -35,4 +37,9 @@ export class FilterFormComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
 }

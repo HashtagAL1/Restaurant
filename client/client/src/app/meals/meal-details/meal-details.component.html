@@ -1,17 +1,17 @@
 <div class="bodyStyle">
-  <h1 class="text-center">{{this.meal.name}}</h1>
+  <h1 class="text-center">{{this.meal?.name}}</h1>
   <div class="col-sm-12 marginTop">
     <div class="col-sm-4 formsList d-inline-block detailsDivs bg-yellowCustom">
-      <img class="detailsImage" src="{{this.meal.imageUrl}}" alt="Meal Image"/>
+      <img class="detailsImage" src="{{this.meal?.imageUrl}}" alt="Meal Image"/>
     </div>
     <div class="col-sm-8 float-right d-inline-block detailsDivs bg-yellowCustom">
       <h4 class="text-lg-left font-weight-bold">Category:</h4>
-      <div class="generalText">{{this.meal.category}} dish</div>
+      <div class="generalText">{{this.meal?.category}} dish</div>
       <h4 class="text-lg-left font-weight-bold">Description:</h4>
-      <div class="generalText">{{this.meal.description}}</div>
+      <div class="generalText">{{this.meal?.description}}</div>
       <h4 class="text-lg-left font-weight-bold">Ingredients:</h4>
-      <div class="generalText">{{this.meal.ingredients.join(',')}}</div>
-      <h4 class="text-lg-left font-weight-bold">Price: {{this.meal.price.toFixed(2)}}$</h4>
+      <div class="generalText">{{this.meal?.ingredients.join(',')}}</div>
+      <h4 class="text-lg-left font-weight-bold">Price: {{this.meal?.price.toFixed(2)}}$</h4>
       <div class="text-center marginTop" id="mealButtons">
         <div *ngIf="!this.auth.isLoggedIn()" class="alert alert-dismissible alert-info">
           <button type="button" class="close" data-dismiss="alert">&times;</button>

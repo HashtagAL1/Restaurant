@@ -6,13 +6,14 @@ import {NotifierService} from "angular-notifier";
 import {Router} from "@angular/router";
 import {CartService} from "../../../services/cart.service";
 import {DatePipe} from "@angular/common";
+import {Subscription} from "rxjs/Rx";
 
 @Component({
   selector: 'app-order-form',
   templateUrl: './order-form.component.html',
   styleUrls: ['./order-form.component.css']
 })
-export class OrderFormComponent implements OnInit {
+export class OrderFormComponent implements OnInit, OnDestroy {
 
   @Input() cart: any;
   @Input() totalPrice: any;
@@ -21,6 +22,7 @@ export class OrderFormComponent implements OnInit {
     pickup: new FormControl('delivery', [Validators.required]),
     customerAddress: new FormControl('', [Validators.required])
   });
+  sub: Subscription;
 
   constructor(public orderService: OrderService,
               public auth: AuthorizationService,
@@ -30,10 +32,6 @@ export class OrderFormComponent implements OnInit {
               public datePipe: DatePipe) { }
 
   ngOnInit() {
-
-  }
-
-  ngOnDestroy() {
   }
 
   checkAddress(value: string) {
@@ -56,7 +54,7 @@ export class OrderFormComponent implements OnInit {
       username: this.auth.getUsername()
     };
 
-    this.orderService.makeOrder(order).subscribe((res) => {
+    this.sub = this.orderService.makeOrder(order).subscribe((res) => {
       if (!res.success) {
           this.notifier.notify('warning', res.message);
           return;
@@ -65,6 +63,12 @@ export class OrderFormComponent implements OnInit {
       this.router.navigate(['/menu']);
       this.cartService.clear();
     });
+  }
+
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
 

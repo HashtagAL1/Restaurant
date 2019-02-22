@@ -1,14 +1,15 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {NotifierService} from "angular-notifier";
 import {UserService} from "../../../services/user.service";
+import {Subscription} from "rxjs/Rx";
 
 @Component({
   selector: 'app-user-row',
   templateUrl: './user-row.component.html',
   styleUrls: ['./user-row.component.css']
 })
-export class UserRowComponent implements OnInit {
+export class UserRowComponent implements OnInit, OnDestroy {
 
   @Input() user: any;
   @Input() refresh: boolean;
@@ -17,6 +18,7 @@ export class UserRowComponent implements OnInit {
   updateForm = new FormGroup({
     role: new FormControl(this.role, [Validators.required])
   });
+  sub: Subscription;
 
   constructor(public notifier: NotifierService,
               public userService: UserService) { }
@@ -32,7 +34,7 @@ export class UserRowComponent implements OnInit {
       this.notifier.notify('info', `User already has the role of: ${role}`);
       return;
     }
-    this.userService.updateUser(this.user._id, role).subscribe((res) => {
+    this.sub = this.userService.updateUser(this.user._id, role).subscribe((res) => {
       if (!res.success) {
         notificationType = 'danger';
         return;
@@ -52,6 +54,9 @@ export class UserRowComponent implements OnInit {
     }
   }
 
-
-
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
 }

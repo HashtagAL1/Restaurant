@@ -1,15 +1,16 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MealService} from "../../services/meal.service";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
+import {Subscription} from "rxjs/Rx";
 
 @Component({
   selector: 'app-add-edit-form',
   templateUrl: './add-edit-form.component.html',
   styleUrls: ['./add-edit-form.component.css']
 })
-export class AddEditFormComponent implements OnInit {
+export class AddEditFormComponent implements OnInit, OnDestroy {
 
 
 
@@ -23,6 +24,7 @@ export class AddEditFormComponent implements OnInit {
     description: new FormControl('', [Validators.required])
   });
   categories = ['Main', 'Salad', 'Desert', 'Appetizer', 'Vegetarian', 'Soup', 'Pizza', 'Sandwich', 'Seafood', 'Other'];
+  sub: Subscription;
 
   constructor(public mealService: MealService,
               public router: Router,
@@ -53,7 +55,7 @@ export class AddEditFormComponent implements OnInit {
     const description = this.form.get('description').value;
     if (!this.isForEdit()) {
       const meal = { name, price, imageUrl, category, ingredients, description};
-      this.mealService.addMeal(meal).subscribe((res) => {
+      this.sub = this.mealService.addMeal(meal).subscribe((res) => {
         if (!res.success) {
           this.notifier.notify('warning', res.message);
           return;
@@ -68,7 +70,7 @@ export class AddEditFormComponent implements OnInit {
       this.meal.category = category;
       this.meal.ingredients = ingredients;
       this.meal.description = description;
-      this.mealService.editMeal(this.meal).subscribe((res) => {
+      this.sub = this.mealService.editMeal(this.meal).subscribe((res) => {
         if (!res.success) {
             this.notifier.notify('warning', res.message);
             return;
@@ -79,4 +81,9 @@ export class AddEditFormComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
+  }
 }

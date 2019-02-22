@@ -3,13 +3,14 @@ import {AuthorizationService} from "../../services/authorization.service";
 import {FormGroup, FormControl, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {NotifierService} from "angular-notifier";
+import {Subscription} from "rxjs/Rx";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
 
   constructor(public auth: AuthorizationService,
               public router: Router,
@@ -23,6 +24,7 @@ export class RegisterComponent implements OnInit {
       Validators.maxLength(20)]),
     confirmPassword: new FormControl('', [Validators.required])
   });
+  sub: Subscription;
 
   ngOnInit() {
   }
@@ -36,7 +38,7 @@ export class RegisterComponent implements OnInit {
         this.notifierService.notify('warning', 'Passwords do not match');
         return;
     }
-    this.auth.register(username, password, email).subscribe((res) => {
+    this.sub = this.auth.register(username, password, email).subscribe((res) => {
       if (!res.success) {
           this.notifierService.notify('warning', res.message);
           return;
@@ -45,6 +47,12 @@ export class RegisterComponent implements OnInit {
       this.notifierService.notify('success', res.message);
       this.router.navigate(['/menu']);
     })
+  }
+
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
 }

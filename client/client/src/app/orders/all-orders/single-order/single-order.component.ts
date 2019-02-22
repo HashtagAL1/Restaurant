@@ -1,16 +1,20 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {OrderService} from "../../../services/order.service";
 import {NotifierService} from "angular-notifier";
 import {AuthorizationService} from "../../../services/authorization.service";
+import {Subscription} from "rxjs/Rx";
 
 @Component({
   selector: 'app-single-order',
   templateUrl: './single-order.component.html',
   styleUrls: ['./single-order.component.css']
 })
-export class SingleOrderComponent implements OnInit {
+export class SingleOrderComponent implements OnInit, OnDestroy {
 
   @Input() order: any;
+  pickupSub: Subscription;
+  takeSub: Subscription;
+  deliverSub: Subscription;
 
   constructor(public orderService: OrderService,
               public notifier: NotifierService,
@@ -45,7 +49,7 @@ export class SingleOrderComponent implements OnInit {
   }
 
   pickUp() {
-    this.orderService.updateOrderStatus(this.order._id, 'Picked Up').subscribe((res) => {
+    this.pickupSub = this.orderService.updateOrderStatus(this.order._id, 'Picked Up').subscribe((res) => {
       if (!res.success) {
         this.notifier.notify('warning', res.message);
         return;
@@ -56,7 +60,7 @@ export class SingleOrderComponent implements OnInit {
   }
 
   takeOrder() {
-    this.orderService.updateOrderStatus(this.order._id, 'Taken').subscribe((res) => {
+    this.takeSub = this.orderService.updateOrderStatus(this.order._id, 'Taken').subscribe((res) => {
       if (!res.success) {
           this.notifier.notify('warning', res.message);
           return;
@@ -67,7 +71,7 @@ export class SingleOrderComponent implements OnInit {
   }
 
   deliverOrder() {
-    this.orderService.updateOrderStatus(this.order._id, 'Delivered').subscribe((res) => {
+    this.deliverSub = this.orderService.updateOrderStatus(this.order._id, 'Delivered').subscribe((res) => {
       if (!res.success) {
           this.notifier.notify('warning', res.message);
           return;
@@ -77,4 +81,15 @@ export class SingleOrderComponent implements OnInit {
     })
   }
 
+  ngOnDestroy() {
+    if (this.pickupSub) {
+      this.pickupSub.unsubscribe();
+    }
+    if (this.takeSub) {
+      this.takeSub.unsubscribe();
+    }
+    if (this.deliverSub) {
+      this.deliverSub.unsubscribe();
+    }
+  }
 }

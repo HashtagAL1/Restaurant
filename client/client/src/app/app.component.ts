@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import * as socketIo from 'socket.io-client'
+import {Spinkit} from "ng-http-loader";
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,7 @@ import * as socketIo from 'socket.io-client'
 })
 export class AppComponent{
   title = 'app';
-
-
+  spinkit = Spinkit;
 
   ngOnInit() {
   }

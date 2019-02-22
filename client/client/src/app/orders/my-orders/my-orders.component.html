@@ -13,6 +13,6 @@
   <div *ngFor="let order of this.orders | paginate: { itemsPerPage: 10, currentPage: p }" class="col-sm-12 text-center font-weight-bold">
     <app-order-row [order]="order"></app-order-row>
   </div>
-  <div *ngIf="this.orders.length <= 10" class="text-center font-weight-bold">Here's only one page</div>
-  <pagination-controls *ngIf="this.orders.length > 10" class="paginationCustom" (pageChange)="p = $event"></pagination-controls>
+  <div *ngIf="this.orders?.length <= 10" class="text-center font-weight-bold">Here's only one page</div>
+  <pagination-controls *ngIf="this.orders?.length > 10" class="paginationCustom" (pageChange)="p = $event"></pagination-controls>
 </div>

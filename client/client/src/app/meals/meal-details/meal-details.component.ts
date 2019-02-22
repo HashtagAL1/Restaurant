@@ -4,6 +4,7 @@ import {MealService} from "../../services/meal.service";
 import {NotifierService} from "angular-notifier";
 import {CartService} from "../../services/cart.service";
 import {AuthorizationService} from "../../services/authorization.service";
+import {Subscription} from "rxjs/Rx";
 
 @Component({
   selector: 'app-meal-details',
@@ -14,6 +15,9 @@ export class MealDetailsComponent implements OnInit {
 
   meal: any;
   showEdit = false;
+  routeSub: Subscription;
+  mealSub: Subscription;
+  deleteSub: Subscription;
 
   constructor(public activatedRoute: ActivatedRoute,
               public router: Router,
@@ -23,8 +27,8 @@ export class MealDetailsComponent implements OnInit {
               public auth: AuthorizationService) { }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((params) => {
-      this.mealService.getMeal(params.mealId).subscribe((res) => {
+    this.routeSub = this.activatedRoute.params.subscribe((params) => {
+      this.mealSub = this.mealService.getMeal(params.mealId).subscribe((res) => {
         if (!res.success) {
           this.notifier.notify('warning', res.message);
           this.router.navigate(['/menu']);
@@ -40,7 +44,7 @@ export class MealDetailsComponent implements OnInit {
   }
 
   delete() {
-    this.mealService.deleteMeal(this.meal._id).subscribe((res) => {
+    this.deleteSub = this.mealService.deleteMeal(this.meal._id).subscribe((res) => {
       if (!res.success) {
           this.notifier.notify('danger', res.message);
           return;
@@ -52,6 +56,18 @@ export class MealDetailsComponent implements OnInit {
 
   showHideEditForm() {
     this.showEdit = !this.showEdit;
+  }
+
+  ngOnDestroy() {
+    if (this.routeSub) {
+      this.routeSub.unsubscribe();
+    }
+    if (this.mealSub) {
+      this.mealSub.unsubscribe();
+    }
+    if (this.deleteSub) {
+      this.deleteSub.unsubscribe();
+    }
   }
 
 }

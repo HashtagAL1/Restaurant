@@ -9,6 +9,8 @@ import {UsersModule} from "./users/users.module";
 import {NotifierModule} from "angular-notifier";
 import {MealsModule} from "./meals/meals.module";
 import {OrdersModule} from "./orders/orders.module";
+import {HttpClientModule} from "@angular/common/http";
+import {NgHttpLoaderModule} from "ng-http-loader";
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import {OrdersModule} from "./orders/orders.module";
     UsersModule,
     MealsModule,
     OrdersModule,
+    HttpClientModule,
+    NgHttpLoaderModule.forRoot(),
     NotifierModule.withConfig({
       position: {
         horizontal: {

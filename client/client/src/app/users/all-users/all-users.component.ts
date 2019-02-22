@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {UserService} from "../../services/user.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {NotifierService} from "angular-notifier";
+import {Subscription} from "rxjs/Rx";
 
 @Component({
   selector: 'app-all-users',
   templateUrl: './all-users.component.html',
   styleUrls: ['./all-users.component.css']
 })
-export class AllUsersComponent implements OnInit {
+export class AllUsersComponent implements OnInit, OnDestroy {
 
   p: any;
   allUsers: any;
@@ -17,13 +18,14 @@ export class AllUsersComponent implements OnInit {
   searchForm = new FormGroup({
     username: new FormControl('', [Validators.minLength(5), Validators.required])
   });
+  sub: Subscription;
 
   constructor(public router: Router,
               public userService: UserService,
               public notifier: NotifierService) { }
 
   ngOnInit() {
-    this.userService.getAllUsers().subscribe((res) => {
+    this.sub = this.userService.getAllUsers().subscribe((res) => {
       this.allUsers = res.users;
     });
     this.refresh = false;
@@ -48,6 +50,12 @@ export class AllUsersComponent implements OnInit {
         return 'Find All'
     }
     return 'Search';
+  }
+
+  ngOnDestroy() {
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 
 

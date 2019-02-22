@@ -11,8 +11,7 @@ export class OrderRowComponent implements OnInit {
 
   @Input() order: any;
 
-  constructor(public router: Router,
-              public orderService: OrderService) { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }
