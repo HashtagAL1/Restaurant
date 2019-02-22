@@ -18,6 +18,7 @@ import {CanViewAllOrdersGuard} from "../guards/can-view-all-orders.guard";
 import {CanViewOrderDetailsGuard} from "../guards/can-view-order-details.guard";
 import {PageNotFoundComponent} from "../shared/page-not-found/page-not-found.component";
 import {ContactUsComponent} from "../shared/contact-us/contact-us.component";
+import {AboutUsComponent} from "../shared/about-us/about-us.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'orderDetails/:orderId', component: OrderDetailsComponent, canActivate: [CanViewOrderDetailsGuard]},
   {path: 'allOrders', component: AllOrdersComponent, canActivate: [CanViewAllOrdersGuard]},
   {path: 'contactUs', component: ContactUsComponent},
+  {path: 'aboutUs', component: AboutUsComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 
