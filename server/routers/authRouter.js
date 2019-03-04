@@ -6,7 +6,7 @@ const encryption = require('../config/encryption');
 const jwt = require('jsonwebtoken');
 require('../config/dbConfig');
 const User = mongoose.model('User');
-const secret = fs.readFileSync('D:\\portProject\\secret.txt', 'utf-8');
+const secret = encryption.secret;
 
 router.post('/register', (req, res) => {
     const {username, password, email} = req.body;
