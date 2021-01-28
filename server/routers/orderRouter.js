@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
+const { isDeliverer, isAdminOrDeliverer, isLoggedIn, isUser, isModerator } = require('../services/authService')
 require('../config/dbConfig');
 const Order = mongoose.model('Order');
 
-router.post('/add', (req, res) => {
+router.post('/add', isUser, (req, res) => {
     const newOrder = req.body;
     Order.create(newOrder)
         .then((no) => {
@@ -16,7 +17,7 @@ router.post('/add', (req, res) => {
         });
 });
 
-router.post('/update/:orderId', (req, res) => {
+router.post('/update/:orderId', isDeliverer, (req, res) => {
     const orderId = req.params.orderId;
     const {status, deliverer} = req.body;
     Order.updateOne({_id: orderId}, { $set: {status: status, deliverer: deliverer}})
@@ -34,7 +35,7 @@ router.post('/update/:orderId', (req, res) => {
         });
 });
 
-router.get('/allOrders', (req, res) => {
+router.get('/allOrders', isAdminOrDeliverer, (req, res) => {
 
     Order.find({})
         .then((orders) => {
@@ -46,7 +47,7 @@ router.get('/allOrders', (req, res) => {
         });
 });
 
-router.get('/status/:status', (req, res) => {
+router.get('/status/:status', isDeliverer, (req, res) => {
     const status = req.params.status;
     Order.find({status: status})
         .then((orders) => {
@@ -58,7 +59,7 @@ router.get('/status/:status', (req, res) => {
         });
 });
 
-router.get('/myOrders/:username', (req, res) => {
+router.get('/myOrders/:username', isUser, (req, res) => {
     const username = req.params.username;
     Order.find({username: username})
         .then((orders) => {
@@ -76,7 +77,7 @@ router.get('/myOrders/:username', (req, res) => {
         });
 });
 
-router.get('/orderDetails/:orderId', (req, res) => {
+router.get('/orderDetails/:orderId', isUser, isAdminOrDeliverer, (req, res) => {
     const orderId = req.params.orderId;
     Order.findOne({_id: orderId})
         .then((order) => {

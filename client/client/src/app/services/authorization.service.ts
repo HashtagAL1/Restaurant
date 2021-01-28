@@ -75,7 +75,8 @@ export class AuthorizationService {
 
   createHeaders() {
     return new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('access_token') || ''
     });
   }
 }

@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const port = 3333;
+const config = require('./config/config')
 const app = express();
 require('./config/dbConfig');
 
@@ -20,8 +20,8 @@ app.use('/auth', authRouter);
 app.use('/meals', mealRouter);
 app.use('/orders', orderRouter);
 app.use('/users', userRouter);
-app.listen(port, () => {
-    console.log(`Server listening on port: ${port}`);
+app.listen(config.port, () => {
+    console.log(`Server listening on port: ${config.port}`);
 });
 
 

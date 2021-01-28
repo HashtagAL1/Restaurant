@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
-const connectionString = `mongodb://localhost:27017/restaurantDB`;
+const config = require('./config')
 require('../models/User');
 require('../models/Meal');
 require('../models/Order');
 
-module.exports = mongoose.connect(connectionString)
+module.exports = mongoose.connect(config.connectionString, { useNewUrlParser: true })
     .then(() => {
     console.log('Database ready for use.');
 });

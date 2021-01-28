@@ -13,12 +13,11 @@ export class UserService {
 
 
   getAllUsers(): Observable<any> {
-    return this.http.get('http://localhost:3333/users/all');
+    return this.http.get('http://localhost:3333/users/all', { headers: this.auth.createHeaders() });
   }
 
   updateUser(userId: string, role: string): Observable<any> {
     const payload = JSON.stringify({role});
-    console.log(payload);
     return this.http.post(`http://localhost:3333/users/update/${userId}`, payload, {headers:this.auth.createHeaders()});
   }
 

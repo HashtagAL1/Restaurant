@@ -22,15 +22,15 @@ export class OrderService {
 
   getUserOrders(): Observable<any> {
     const username = this.auth.getUsername();
-    return this.http.get(`http://localhost:3333/orders/myOrders/${username}`);
+    return this.http.get(`http://localhost:3333/orders/myOrders/${username}`, {headers: this.auth.createHeaders()});
   }
 
   getOrder(orderId: string): Observable<any> {
-    return this.http.get(`http://localhost:3333/orders/orderDetails/${orderId}`);
+    return this.http.get(`http://localhost:3333/orders/orderDetails/${orderId}`, {headers: this.auth.createHeaders()});
   }
 
   getAllOrders(): Observable<any> {
-    return this.http.get('http://localhost:3333/orders/allOrders');
+    return this.http.get('http://localhost:3333/orders/allOrders', {headers: this.auth.createHeaders()});
   }
 
   updateOrderStatus(orderId: string, status: string): Observable<any> {

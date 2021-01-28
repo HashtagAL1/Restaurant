@@ -13,7 +13,7 @@ import {Subscription} from "rxjs/Rx";
 export class AllUsersComponent implements OnInit, OnDestroy {
 
   p: any;
-  allUsers: any;
+  allUsers: any = [];
   refresh: boolean;
   searchForm = new FormGroup({
     username: new FormControl('', [Validators.minLength(5), Validators.required])

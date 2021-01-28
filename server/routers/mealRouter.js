@@ -1,10 +1,22 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
+const { isModerator } = require('../services/authService');
 require('../config/dbConfig');
 const Meal = mongoose.model('Meal');
 
-router.post('/add', (req, res) => {
+router.get('/allMeals', (req, res) => {
+    Meal.find({})
+        .then((meals) => {
+            return res.status(200).json({
+                success: true,
+                message: 'Meals fetched',
+                meals: meals
+            });
+        });
+});
+
+router.post('/add', isModerator, (req, res) => {
     const newMeal = req.body;
     Meal.findOne({name: newMeal.name})
         .then((meal) => {
@@ -24,7 +36,7 @@ router.post('/add', (req, res) => {
         });
 });
 
-router.post('/edit/:mealId', (req, res) => {
+router.post('/edit/:mealId', isModerator, (req, res) => {
     const mealId = req.params.mealId;
     const editedMeal = req.body;
     Meal.updateOne({_id: mealId}, editedMeal)
@@ -42,7 +54,7 @@ router.post('/edit/:mealId', (req, res) => {
         });
 });
 
-router.post('/delete/:mealId', (req, res) => {
+router.post('/delete/:mealId', isModerator, (req, res) => {
     const mealId = req.params.mealId;
     Meal.deleteOne({_id: mealId})
         .then(() => {
@@ -55,17 +67,6 @@ router.post('/delete/:mealId', (req, res) => {
             return res.status(200).json({
                 success: false,
                 message: 'Invalid mealId'
-            });
-        });
-});
-
-router.get('/allMeals', (req, res) => {
-    Meal.find({})
-        .then((meals) => {
-            return res.status(200).json({
-                success: true,
-                message: 'Meals fetched',
-                meals: meals
             });
         });
 });

@@ -4,11 +4,6 @@
     <div class="form-group">
       <label class="generalText" for="usernameLogin">Username</label>
       <input type="text" class="form-control" id="usernameLogin" formControlName="username" placeholder="Enter username"/>
-      <div *ngIf="this.loginForm.get('username').touched && this.loginForm.get('username').invalid" class="alert alert-danger">
-        <div *ngIf="this.loginForm.get('username').errors.required">This field is required</div>
-        <div *ngIf="this.loginForm.get('username').errors.minlength">Username must be at least 5 characters long</div>
-        <div *ngIf="this.loginForm.get('username').errors.maxlength">Username must be at most 15 characters long</div>
-      </div>
     </div>
     <div class="form-group">
       <label class="generalText" for="passwordLogin">Password</label>
